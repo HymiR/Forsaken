@@ -1,0 +1,13 @@
+This file contains the milestones we have to reach to have a working game
+
+1. Implement a model loader plugin for the Ogre3d engine
+
+2. Write a music/sound effect library
+
+3. Write a lib to handle input events (keyboard, joystick,...)
+
+4. Implement game logic (physics, collision detection, explosions, splash damage)
+
+5. Write code for ingame items, weapons, characters, stuff,..
+
+6. Implement particle effects and other shiny stuff
