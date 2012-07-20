@@ -1,6 +1,6 @@
 /*
 -----------------------------------------------------------------------------
-Filename:    BaseApplication.h
+Filename:    O3dconfig.h
 -----------------------------------------------------------------------------
 
 This source file is part of the
@@ -14,8 +14,8 @@ This source file is part of the
       http://www.ogre3d.org/tikiwiki/
 -----------------------------------------------------------------------------
 */
-#ifndef __BaseApplication_h_
-#define __BaseApplication_h_
+#ifndef __O3dconfig_h_
+#define __O3dconfig_h_
 
 #include <OgreCamera.h>
 #include <OgreEntity.h>
@@ -34,11 +34,11 @@ This source file is part of the
 #include <SdkTrays.h>
 #include <SdkCameraMan.h>
 
-class BaseApplication : public Ogre::FrameListener, public Ogre::WindowEventListener, public OIS::KeyListener, public OIS::MouseListener, OgreBites::SdkTrayListener
+class O3dconfig : public Ogre::FrameListener, public Ogre::WindowEventListener, public OIS::KeyListener, public OIS::MouseListener, OgreBites::SdkTrayListener
 {
 public:
-    BaseApplication(void);
-    virtual ~BaseApplication(void);
+    O3dconfig(void);
+    virtual ~O3dconfig(void);
 
     virtual void go(void);
 
@@ -92,4 +92,4 @@ protected:
     OIS::Keyboard* mKeyboard;
 };
 
-#endif // #ifndef __BaseApplication_h_
+#endif // #ifndef __O3dconfig_h_

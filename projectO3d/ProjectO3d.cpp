@@ -1,6 +1,6 @@
 /*
 -----------------------------------------------------------------------------
-Filename:    TutorialApplication.cpp
+Filename:    ProjectO3d.cpp
 -----------------------------------------------------------------------------
 
 This source file is part of the
@@ -14,20 +14,20 @@ This source file is part of the
       http://www.ogre3d.org/tikiwiki/
 -----------------------------------------------------------------------------
 */
-#include "TutorialApplication.h"
+#include "ProjectO3d.h"
 #include "forsaken_loader/fskloader.h"
 
 //-------------------------------------------------------------------------------------
-TutorialApplication::TutorialApplication(void)
+ProjectO3d::ProjectO3d(void)
 {
 }
 //-------------------------------------------------------------------------------------
-TutorialApplication::~TutorialApplication(void)
+ProjectO3d::~ProjectO3d(void)
 {
 }
 
 //-------------------------------------------------------------------------------------
-void TutorialApplication::createScene(void)
+void ProjectO3d::createScene(void)
 {
     // create your scene here :)
 	 // Set the scene's ambient light
@@ -66,7 +66,7 @@ extern "C" {
 #endif
     {
         // Create application object
-        TutorialApplication app;
+        ProjectO3d app;
 
         try {
             app.go();

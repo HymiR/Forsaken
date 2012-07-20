@@ -15,8 +15,8 @@
 #-----------------------------------------------------------------------------
 #*/
 cmake_minimum_required(VERSION 2.6)
- 
-project(OgreApp)
+
+project(ProjectO3d)
  
 if(WIN32)
 	set(CMAKE_MODULE_PATH "$ENV{OGRE_HOME}/CMake/;${CMAKE_MODULE_PATH}")
@@ -95,14 +95,14 @@ if (NOT OGRE_BUILD_PLATFORM_IPHONE)
 endif()
  
 set(HDRS
-	./BaseApplication.h
-	./TutorialApplication.h
+	./O3dconfig.h
+	./ProjectO3d.h
 	./forsaken_loader/fskloader.h
 )
  
 set(SRCS
-	./BaseApplication.cpp
-	./TutorialApplication.cpp
+	./O3dconfig.cpp
+	./ProjectO3d.cpp
 	./forsaken_loader/fskloader.cpp
 )
  
@@ -111,20 +111,20 @@ include_directories( ${OIS_INCLUDE_DIRS}
 	${OGRE_SAMPLES_INCLUDEPATH}
 )
  
-add_executable(OgreApp WIN32 ${HDRS} ${SRCS})
+add_executable(ProjectO3d WIN32 ${HDRS} ${SRCS})
  
-set_target_properties(OgreApp PROPERTIES DEBUG_POSTFIX _d)
+set_target_properties(ProjectO3d PROPERTIES DEBUG_POSTFIX _d)
  
-target_link_libraries(OgreApp ${OGRE_LIBRARIES} ${OIS_LIBRARIES} boost_system)
+target_link_libraries(ProjectO3d ${OGRE_LIBRARIES} ${OIS_LIBRARIES} boost_system)
  
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/dist/bin)
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/dist/media)
  
 # post-build copy for win32
 if(WIN32 AND NOT MINGW)
-	add_custom_command( TARGET OgreApp PRE_BUILD
+	add_custom_command( TARGET ProjectO3d PRE_BUILD
 		COMMAND if not exist .\\dist\\bin mkdir .\\dist\\bin )
-	add_custom_command( TARGET OgreApp POST_BUILD
+	add_custom_command( TARGET ProjectO3d POST_BUILD
 		COMMAND copy \"$(TargetPath)\" .\\dist\\bin )
 endif(WIN32 AND NOT MINGW)
 
@@ -134,7 +134,7 @@ endif(MINGW OR UNIX)
  
 if(WIN32)
  
-	install(TARGETS OgreApp
+	install(TARGETS ProjectO3d
 		RUNTIME DESTINATION bin
 		CONFIGURATIONS All)
  
@@ -190,7 +190,7 @@ endif(WIN32)
 
 if(UNIX)
  
-	install(TARGETS OgreApp
+	install(TARGETS ProjectO3d
 		RUNTIME DESTINATION bin
 		CONFIGURATIONS All)
  

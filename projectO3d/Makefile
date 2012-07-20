@@ -36,13 +36,13 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The program to use to edit the cache.
-CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
+CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/vidar/programming/cpp/ogre3d/ogre_projects/clean_ogre_cmake_project
+CMAKE_SOURCE_DIR = /home/vidar/programming/cpp/ogre3d/Forsaken/projectO3d
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/vidar/programming/cpp/ogre3d/ogre_projects/clean_ogre_cmake_project
+CMAKE_BINARY_DIR = /home/vidar/programming/cpp/ogre3d/Forsaken/projectO3d
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -50,7 +50,7 @@ CMAKE_BINARY_DIR = /home/vidar/programming/cpp/ogre3d/ogre_projects/clean_ogre_c
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/usr/bin/cmake-gui -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/usr/bin/ccmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -110,9 +110,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/vidar/programming/cpp/ogre3d/ogre_projects/clean_ogre_cmake_project/CMakeFiles /home/vidar/programming/cpp/ogre3d/ogre_projects/clean_ogre_cmake_project/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/vidar/programming/cpp/ogre3d/Forsaken/projectO3d/CMakeFiles /home/vidar/programming/cpp/ogre3d/Forsaken/projectO3d/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/vidar/programming/cpp/ogre3d/ogre_projects/clean_ogre_cmake_project/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/vidar/programming/cpp/ogre3d/Forsaken/projectO3d/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -140,72 +140,72 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named OgreApp
+# Target rules for targets named ProjectO3d
 
 # Build rule for target.
-OgreApp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 OgreApp
-.PHONY : OgreApp
+ProjectO3d: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ProjectO3d
+.PHONY : ProjectO3d
 
 # fast build rule for target.
-OgreApp/fast:
-	$(MAKE) -f CMakeFiles/OgreApp.dir/build.make CMakeFiles/OgreApp.dir/build
-.PHONY : OgreApp/fast
+ProjectO3d/fast:
+	$(MAKE) -f CMakeFiles/ProjectO3d.dir/build.make CMakeFiles/ProjectO3d.dir/build
+.PHONY : ProjectO3d/fast
 
-BaseApplication.o: BaseApplication.cpp.o
-.PHONY : BaseApplication.o
-
-# target to build an object file
-BaseApplication.cpp.o:
-	$(MAKE) -f CMakeFiles/OgreApp.dir/build.make CMakeFiles/OgreApp.dir/BaseApplication.cpp.o
-.PHONY : BaseApplication.cpp.o
-
-BaseApplication.i: BaseApplication.cpp.i
-.PHONY : BaseApplication.i
-
-# target to preprocess a source file
-BaseApplication.cpp.i:
-	$(MAKE) -f CMakeFiles/OgreApp.dir/build.make CMakeFiles/OgreApp.dir/BaseApplication.cpp.i
-.PHONY : BaseApplication.cpp.i
-
-BaseApplication.s: BaseApplication.cpp.s
-.PHONY : BaseApplication.s
-
-# target to generate assembly for a file
-BaseApplication.cpp.s:
-	$(MAKE) -f CMakeFiles/OgreApp.dir/build.make CMakeFiles/OgreApp.dir/BaseApplication.cpp.s
-.PHONY : BaseApplication.cpp.s
-
-TutorialApplication.o: TutorialApplication.cpp.o
-.PHONY : TutorialApplication.o
+O3dconfig.o: O3dconfig.cpp.o
+.PHONY : O3dconfig.o
 
 # target to build an object file
-TutorialApplication.cpp.o:
-	$(MAKE) -f CMakeFiles/OgreApp.dir/build.make CMakeFiles/OgreApp.dir/TutorialApplication.cpp.o
-.PHONY : TutorialApplication.cpp.o
+O3dconfig.cpp.o:
+	$(MAKE) -f CMakeFiles/ProjectO3d.dir/build.make CMakeFiles/ProjectO3d.dir/O3dconfig.cpp.o
+.PHONY : O3dconfig.cpp.o
 
-TutorialApplication.i: TutorialApplication.cpp.i
-.PHONY : TutorialApplication.i
+O3dconfig.i: O3dconfig.cpp.i
+.PHONY : O3dconfig.i
 
 # target to preprocess a source file
-TutorialApplication.cpp.i:
-	$(MAKE) -f CMakeFiles/OgreApp.dir/build.make CMakeFiles/OgreApp.dir/TutorialApplication.cpp.i
-.PHONY : TutorialApplication.cpp.i
+O3dconfig.cpp.i:
+	$(MAKE) -f CMakeFiles/ProjectO3d.dir/build.make CMakeFiles/ProjectO3d.dir/O3dconfig.cpp.i
+.PHONY : O3dconfig.cpp.i
 
-TutorialApplication.s: TutorialApplication.cpp.s
-.PHONY : TutorialApplication.s
+O3dconfig.s: O3dconfig.cpp.s
+.PHONY : O3dconfig.s
 
 # target to generate assembly for a file
-TutorialApplication.cpp.s:
-	$(MAKE) -f CMakeFiles/OgreApp.dir/build.make CMakeFiles/OgreApp.dir/TutorialApplication.cpp.s
-.PHONY : TutorialApplication.cpp.s
+O3dconfig.cpp.s:
+	$(MAKE) -f CMakeFiles/ProjectO3d.dir/build.make CMakeFiles/ProjectO3d.dir/O3dconfig.cpp.s
+.PHONY : O3dconfig.cpp.s
+
+ProjectO3d.o: ProjectO3d.cpp.o
+.PHONY : ProjectO3d.o
+
+# target to build an object file
+ProjectO3d.cpp.o:
+	$(MAKE) -f CMakeFiles/ProjectO3d.dir/build.make CMakeFiles/ProjectO3d.dir/ProjectO3d.cpp.o
+.PHONY : ProjectO3d.cpp.o
+
+ProjectO3d.i: ProjectO3d.cpp.i
+.PHONY : ProjectO3d.i
+
+# target to preprocess a source file
+ProjectO3d.cpp.i:
+	$(MAKE) -f CMakeFiles/ProjectO3d.dir/build.make CMakeFiles/ProjectO3d.dir/ProjectO3d.cpp.i
+.PHONY : ProjectO3d.cpp.i
+
+ProjectO3d.s: ProjectO3d.cpp.s
+.PHONY : ProjectO3d.s
+
+# target to generate assembly for a file
+ProjectO3d.cpp.s:
+	$(MAKE) -f CMakeFiles/ProjectO3d.dir/build.make CMakeFiles/ProjectO3d.dir/ProjectO3d.cpp.s
+.PHONY : ProjectO3d.cpp.s
 
 forsaken_loader/fskloader.o: forsaken_loader/fskloader.cpp.o
 .PHONY : forsaken_loader/fskloader.o
 
 # target to build an object file
 forsaken_loader/fskloader.cpp.o:
-	$(MAKE) -f CMakeFiles/OgreApp.dir/build.make CMakeFiles/OgreApp.dir/forsaken_loader/fskloader.cpp.o
+	$(MAKE) -f CMakeFiles/ProjectO3d.dir/build.make CMakeFiles/ProjectO3d.dir/forsaken_loader/fskloader.cpp.o
 .PHONY : forsaken_loader/fskloader.cpp.o
 
 forsaken_loader/fskloader.i: forsaken_loader/fskloader.cpp.i
@@ -213,7 +213,7 @@ forsaken_loader/fskloader.i: forsaken_loader/fskloader.cpp.i
 
 # target to preprocess a source file
 forsaken_loader/fskloader.cpp.i:
-	$(MAKE) -f CMakeFiles/OgreApp.dir/build.make CMakeFiles/OgreApp.dir/forsaken_loader/fskloader.cpp.i
+	$(MAKE) -f CMakeFiles/ProjectO3d.dir/build.make CMakeFiles/ProjectO3d.dir/forsaken_loader/fskloader.cpp.i
 .PHONY : forsaken_loader/fskloader.cpp.i
 
 forsaken_loader/fskloader.s: forsaken_loader/fskloader.cpp.s
@@ -221,7 +221,7 @@ forsaken_loader/fskloader.s: forsaken_loader/fskloader.cpp.s
 
 # target to generate assembly for a file
 forsaken_loader/fskloader.cpp.s:
-	$(MAKE) -f CMakeFiles/OgreApp.dir/build.make CMakeFiles/OgreApp.dir/forsaken_loader/fskloader.cpp.s
+	$(MAKE) -f CMakeFiles/ProjectO3d.dir/build.make CMakeFiles/ProjectO3d.dir/forsaken_loader/fskloader.cpp.s
 .PHONY : forsaken_loader/fskloader.cpp.s
 
 # Help Target
@@ -230,19 +230,19 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... OgreApp"
+	@echo "... ProjectO3d"
 	@echo "... edit_cache"
 	@echo "... install"
 	@echo "... install/local"
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... BaseApplication.o"
-	@echo "... BaseApplication.i"
-	@echo "... BaseApplication.s"
-	@echo "... TutorialApplication.o"
-	@echo "... TutorialApplication.i"
-	@echo "... TutorialApplication.s"
+	@echo "... O3dconfig.o"
+	@echo "... O3dconfig.i"
+	@echo "... O3dconfig.s"
+	@echo "... ProjectO3d.o"
+	@echo "... ProjectO3d.i"
+	@echo "... ProjectO3d.s"
 	@echo "... forsaken_loader/fskloader.o"
 	@echo "... forsaken_loader/fskloader.i"
 	@echo "... forsaken_loader/fskloader.s"

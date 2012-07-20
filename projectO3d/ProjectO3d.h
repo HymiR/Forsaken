@@ -1,6 +1,6 @@
 /*
 -----------------------------------------------------------------------------
-Filename:    TutorialApplication.h
+Filename:    ProjectO3d.h
 -----------------------------------------------------------------------------
 
 This source file is part of the
@@ -14,19 +14,19 @@ This source file is part of the
       http://www.ogre3d.org/tikiwiki/
 -----------------------------------------------------------------------------
 */
-#ifndef __TutorialApplication_h_
-#define __TutorialApplication_h_
+#ifndef __ProjectO3d_h_
+#define __ProjectO3d_h_
 
-#include "BaseApplication.h"
+#include "O3dconfig.h"
 
-class TutorialApplication : public BaseApplication
+class ProjectO3d : public O3dconfig
 {
 public:
-    TutorialApplication(void);
-    virtual ~TutorialApplication(void);
+    ProjectO3d(void);
+    virtual ~ProjectO3d(void);
 
 protected:
     virtual void createScene(void);
 };
 
-#endif // #ifndef __TutorialApplication_h_
+#endif // #ifndef __ProjectO3d_h_

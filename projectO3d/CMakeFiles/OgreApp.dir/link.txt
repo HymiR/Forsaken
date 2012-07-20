@@ -1,1 +1,0 @@
-/usr/bin/c++   -O2 -g    CMakeFiles/OgreApp.dir/BaseApplication.cpp.o CMakeFiles/OgreApp.dir/TutorialApplication.cpp.o CMakeFiles/OgreApp.dir/forsaken_loader/fskloader.cpp.o  -o dist/bin/OgreApp -rdynamic -lOgreMain -lboost_thread -lboost_date_time -lOIS -lboost_system 

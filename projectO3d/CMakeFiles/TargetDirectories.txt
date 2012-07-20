@@ -1,1 +1,0 @@
-/home/vidar/programming/cpp/ogre3d/ogre_projects/clean_ogre_cmake_project/CMakeFiles/OgreApp.dir
