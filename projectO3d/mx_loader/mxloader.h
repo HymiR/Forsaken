@@ -7,12 +7,16 @@
 typedef boost::multi_array<int, 2> ivec2d_type;
 typedef ivec2d_type::index ivec2_index_type;
 
+typedef struct _VERTEX {
+	float x,y,z;
+}Vertex;
+
 typedef struct _MODEL {
 	std::vector<float> textures;
 	ivec2d_type matlist;
-	std::vector<float> materials;
-	std::vector<float> verts;
-	std::vector<float> texcoords;
+	std::vector<float> materials; // 1 material: TODO create material struct
+	std::vector<Vertex> verts;
+	std::vector<float> texcoords; // struct with 2 float values TODO: create texcoords struct
 	std::vector<float> triangles;
 	int vert_offset;
 }Model;
