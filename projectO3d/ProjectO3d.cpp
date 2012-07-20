@@ -45,7 +45,7 @@ void ProjectO3d::createScene(void)
     light->setPosition(20.0f, 80.0f, 50.0f);
 
 	 // here we will load a forsaken model when the loader is finished
-	 MXloader* mxl = new MXloader("dummy.mx");
+	 MXloader* mxl = new MXloader("../media/models/titan.mx");
 }
 
 
