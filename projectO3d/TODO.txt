@@ -11,3 +11,5 @@ This file contains the milestones we have to reach to have a working game
 5. Write code for ingame items, weapons, characters, stuff,..
 
 6. Implement particle effects and other shiny stuff
+
+7. Implement a nice start menu
