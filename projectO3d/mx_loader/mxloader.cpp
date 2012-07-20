@@ -1,18 +1,18 @@
-#include "fskloader.h"
+#include "mxloader.h"
 
-FSKloader::FSKloader( std::string filepath )
+MXloader::MXloader( std::string filepath )
 {
 	this->filepath = filepath;
 }
 
-FSKloader::~FSKloader() {
+MXloader::~MXloader() {
 	if(this->model){
 		delete this->model;
 		this->model = NULL;
 	}
 }
 
-rgba_type FSKloader::rgba(int n)
+rgba_type MXloader::rgba(int n)
 {
 	rgba_type rgba_s;
 	rgba_s.b = (n & 0xff) / 255;
@@ -26,13 +26,13 @@ rgba_type FSKloader::rgba(int n)
 	return rgba_s;
 }
 
-bool FSKloader::check_if_MX_model(std::string file)
+bool MXloader::check_if_MX_model(std::string file)
 {
 
 	return false;
 }
 
-Model* FSKloader::getModel()
+Model* MXloader::getModel()
 {
 
 	return this->model;

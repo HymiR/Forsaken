@@ -1,5 +1,5 @@
-#ifndef __FSKLOADER_H_
-#define __FSKLOADER_H_
+#ifndef __MXLOADER_H_
+#define __MXLOADER_H_
 #include <vector>
 #include <cstdio>
 #include "boost/multi_array.hpp"
@@ -21,10 +21,10 @@ typedef struct _RGBA {
 	int r,g,b,a;
 }rgba_type;
 
-class FSKloader {
+class MXloader {
 	public:
-		FSKloader(std::string);
-		virtual ~FSKloader();
+		MXloader(std::string);
+		virtual ~MXloader();
 
 		Model* getModel();
 

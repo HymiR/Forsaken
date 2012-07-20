@@ -200,29 +200,29 @@ ProjectO3d.cpp.s:
 	$(MAKE) -f CMakeFiles/ProjectO3d.dir/build.make CMakeFiles/ProjectO3d.dir/ProjectO3d.cpp.s
 .PHONY : ProjectO3d.cpp.s
 
-forsaken_loader/fskloader.o: forsaken_loader/fskloader.cpp.o
-.PHONY : forsaken_loader/fskloader.o
+mx_loader/mxloader.o: mx_loader/mxloader.cpp.o
+.PHONY : mx_loader/mxloader.o
 
 # target to build an object file
-forsaken_loader/fskloader.cpp.o:
-	$(MAKE) -f CMakeFiles/ProjectO3d.dir/build.make CMakeFiles/ProjectO3d.dir/forsaken_loader/fskloader.cpp.o
-.PHONY : forsaken_loader/fskloader.cpp.o
+mx_loader/mxloader.cpp.o:
+	$(MAKE) -f CMakeFiles/ProjectO3d.dir/build.make CMakeFiles/ProjectO3d.dir/mx_loader/mxloader.cpp.o
+.PHONY : mx_loader/mxloader.cpp.o
 
-forsaken_loader/fskloader.i: forsaken_loader/fskloader.cpp.i
-.PHONY : forsaken_loader/fskloader.i
+mx_loader/mxloader.i: mx_loader/mxloader.cpp.i
+.PHONY : mx_loader/mxloader.i
 
 # target to preprocess a source file
-forsaken_loader/fskloader.cpp.i:
-	$(MAKE) -f CMakeFiles/ProjectO3d.dir/build.make CMakeFiles/ProjectO3d.dir/forsaken_loader/fskloader.cpp.i
-.PHONY : forsaken_loader/fskloader.cpp.i
+mx_loader/mxloader.cpp.i:
+	$(MAKE) -f CMakeFiles/ProjectO3d.dir/build.make CMakeFiles/ProjectO3d.dir/mx_loader/mxloader.cpp.i
+.PHONY : mx_loader/mxloader.cpp.i
 
-forsaken_loader/fskloader.s: forsaken_loader/fskloader.cpp.s
-.PHONY : forsaken_loader/fskloader.s
+mx_loader/mxloader.s: mx_loader/mxloader.cpp.s
+.PHONY : mx_loader/mxloader.s
 
 # target to generate assembly for a file
-forsaken_loader/fskloader.cpp.s:
-	$(MAKE) -f CMakeFiles/ProjectO3d.dir/build.make CMakeFiles/ProjectO3d.dir/forsaken_loader/fskloader.cpp.s
-.PHONY : forsaken_loader/fskloader.cpp.s
+mx_loader/mxloader.cpp.s:
+	$(MAKE) -f CMakeFiles/ProjectO3d.dir/build.make CMakeFiles/ProjectO3d.dir/mx_loader/mxloader.cpp.s
+.PHONY : mx_loader/mxloader.cpp.s
 
 # Help Target
 help:
@@ -243,9 +243,9 @@ help:
 	@echo "... ProjectO3d.o"
 	@echo "... ProjectO3d.i"
 	@echo "... ProjectO3d.s"
-	@echo "... forsaken_loader/fskloader.o"
-	@echo "... forsaken_loader/fskloader.i"
-	@echo "... forsaken_loader/fskloader.s"
+	@echo "... mx_loader/mxloader.o"
+	@echo "... mx_loader/mxloader.i"
+	@echo "... mx_loader/mxloader.s"
 .PHONY : help
 
 

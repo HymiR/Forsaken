@@ -97,13 +97,13 @@ endif()
 set(HDRS
 	./O3dconfig.h
 	./ProjectO3d.h
-	./forsaken_loader/fskloader.h
+	./mx_loader/mxloader.h
 )
  
 set(SRCS
 	./O3dconfig.cpp
 	./ProjectO3d.cpp
-	./forsaken_loader/fskloader.cpp
+	./mx_loader/mxloader.cpp
 )
  
 include_directories( ${OIS_INCLUDE_DIRS}
