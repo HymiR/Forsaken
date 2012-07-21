@@ -46,6 +46,7 @@ class MXloader {
 		virtual ~MXloader();
 
 		Model* getModel();
+		void load_new_model(std::string);
 
 	private:
 		FILE* modelfile;
@@ -54,6 +55,7 @@ class MXloader {
 		rgba_type rgba(int);
 		bool check_if_MX_model(std::string);
 		void readModel();
+		void remove_old_model();
 		Bytes getBytes(std::string);
 	protected:
 };

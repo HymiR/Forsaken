@@ -7,6 +7,19 @@ MXloader::MXloader( std::string filepath )
 	this->modelfile = NULL;
 	this->model = NULL;
 	this->filepath = filepath;
+	
+	load_new_model(filepath);
+}
+
+MXloader::~MXloader()
+{
+	remove_old_model();
+}
+
+void MXloader::load_new_model(std::string filepath)
+{
+	remove_old_model();
+	
 	if(check_if_MX_model(filepath)) {
 		std::cout << "We have a valid mx file\n";
 		this->modelfile = fopen(filepath.c_str(), "rb");
@@ -15,11 +28,13 @@ MXloader::MXloader( std::string filepath )
 	}
 }
 
-MXloader::~MXloader() {
+void MXloader::remove_old_model()
+{
 	if(this->model){
 		delete this->model;
 		this->model = NULL;
 	}
+
 	if(this->modelfile) {
 		fclose(this->modelfile);
 		this->modelfile = NULL;
