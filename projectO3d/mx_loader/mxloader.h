@@ -11,12 +11,19 @@ typedef struct _VERTEX {
 	float x,y,z;
 }Vertex;
 
+typedef struct _TEXCOORDS {
+	float tu, tv;
+}Texcoords;
+
+typedef struct _MATERIAL {
+}Material;
+
 typedef struct _MODEL {
 	std::vector<float> textures;
 	ivec2d_type matlist;
-	std::vector<float> materials; // 1 material: TODO create material struct
+	std::vector<Material> materials; // 1 material: TODO create material struct
 	std::vector<Vertex> verts;
-	std::vector<float> texcoords; // struct with 2 float values TODO: create texcoords struct
+	std::vector<Texcoords> texcoords; // struct with 2 float values TODO: create texcoords struct
 	std::vector<float> triangles;
 	int vert_offset;
 }Model;
@@ -24,6 +31,14 @@ typedef struct _MODEL {
 typedef struct _RGBA {
 	int r,g,b,a;
 }rgba_type;
+
+typedef struct _BYTES {
+	short h;
+	int i;
+	unsigned int I;
+	float v[3];
+	std::string s;
+}Bytes;
 
 class MXloader {
 	public:
@@ -33,10 +48,13 @@ class MXloader {
 		Model* getModel();
 
 	private:
+		FILE* modelfile;
 		std::string filepath;
 		Model* model;
 		rgba_type rgba(int);
 		bool check_if_MX_model(std::string);
+		void readModel();
+		Bytes getBytes(std::string);
 	protected:
 };
 
