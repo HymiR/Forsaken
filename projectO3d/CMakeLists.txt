@@ -97,47 +97,53 @@ endif()
 set(HDRS
 	./O3dconfig.h
 	./ProjectO3d.h
-	./mx_loader/mxloader.h
 )
  
 set(SRCS
 	./O3dconfig.cpp
 	./ProjectO3d.cpp
-	./mx_loader/mxloader.cpp
 )
- 
+
+set(mxloader_src ./mx_loader/mxloader.cpp)
+add_library(Plugin_MXloader SHARED ${mxloader_src})
+set_target_properties(Plugin_MXloader PROPERTIES PREFIX "")
+
 include_directories( ${OIS_INCLUDE_DIRS}
 	${OGRE_INCLUDE_DIRS}
 	${OGRE_SAMPLES_INCLUDEPATH}
 )
  
 add_executable(ProjectO3d WIN32 ${HDRS} ${SRCS})
- 
 set_target_properties(ProjectO3d PROPERTIES DEBUG_POSTFIX _d)
- 
 target_link_libraries(ProjectO3d ${OGRE_LIBRARIES} ${OIS_LIBRARIES} boost_system)
- 
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/dist/bin)
+file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/dist/bin/plugins)
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/dist/media)
- 
+
 # post-build copy for win32
 if(WIN32 AND NOT MINGW)
 	add_custom_command( TARGET ProjectO3d PRE_BUILD
-		COMMAND if not exist .\\dist\\bin mkdir .\\dist\\bin )
+		COMMAND if not exist .\\dist\\bin\\plugins mkdir .\\dist\\bin\\plugins )
 	add_custom_command( TARGET ProjectO3d POST_BUILD
 		COMMAND copy \"$(TargetPath)\" .\\dist\\bin )
+
 endif(WIN32 AND NOT MINGW)
 
 if(MINGW OR UNIX)
 	set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/dist/bin)
+	set(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/dist/bin/plugins)
 endif(MINGW OR UNIX)
- 
+
 if(WIN32)
  
 	install(TARGETS ProjectO3d
 		RUNTIME DESTINATION bin
 		CONFIGURATIONS All)
- 
+
+	install(TARGETS Plugin_MXloader
+		RUNTIME DESTINATION plugins
+		CONFIGURATIONS All)
+
 	install(DIRECTORY ${CMAKE_SOURCE_DIR}/dist/Media
 		DESTINATION ./
 		CONFIGURATIONS Release RelWithDebInfo Debug
@@ -193,7 +199,11 @@ if(UNIX)
 	install(TARGETS ProjectO3d
 		RUNTIME DESTINATION bin
 		CONFIGURATIONS All)
- 
+
+	install(TARGETS Plugin_MXloader
+		DESTINATION plugins
+		CONFIGURATIONS All)
+
 	install(DIRECTORY ${CMAKE_SOURCE_DIR}/dist/media
 		DESTINATION ./
 		CONFIGURATIONS Release RelWithDebInfo Debug

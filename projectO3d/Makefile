@@ -140,6 +140,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named Plugin_MXloader
+
+# Build rule for target.
+Plugin_MXloader: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Plugin_MXloader
+.PHONY : Plugin_MXloader
+
+# fast build rule for target.
+Plugin_MXloader/fast:
+	$(MAKE) -f CMakeFiles/Plugin_MXloader.dir/build.make CMakeFiles/Plugin_MXloader.dir/build
+.PHONY : Plugin_MXloader/fast
+
+#=============================================================================
 # Target rules for targets named ProjectO3d
 
 # Build rule for target.
@@ -205,7 +218,7 @@ mx_loader/mxloader.o: mx_loader/mxloader.cpp.o
 
 # target to build an object file
 mx_loader/mxloader.cpp.o:
-	$(MAKE) -f CMakeFiles/ProjectO3d.dir/build.make CMakeFiles/ProjectO3d.dir/mx_loader/mxloader.cpp.o
+	$(MAKE) -f CMakeFiles/Plugin_MXloader.dir/build.make CMakeFiles/Plugin_MXloader.dir/mx_loader/mxloader.cpp.o
 .PHONY : mx_loader/mxloader.cpp.o
 
 mx_loader/mxloader.i: mx_loader/mxloader.cpp.i
@@ -213,7 +226,7 @@ mx_loader/mxloader.i: mx_loader/mxloader.cpp.i
 
 # target to preprocess a source file
 mx_loader/mxloader.cpp.i:
-	$(MAKE) -f CMakeFiles/ProjectO3d.dir/build.make CMakeFiles/ProjectO3d.dir/mx_loader/mxloader.cpp.i
+	$(MAKE) -f CMakeFiles/Plugin_MXloader.dir/build.make CMakeFiles/Plugin_MXloader.dir/mx_loader/mxloader.cpp.i
 .PHONY : mx_loader/mxloader.cpp.i
 
 mx_loader/mxloader.s: mx_loader/mxloader.cpp.s
@@ -221,7 +234,7 @@ mx_loader/mxloader.s: mx_loader/mxloader.cpp.s
 
 # target to generate assembly for a file
 mx_loader/mxloader.cpp.s:
-	$(MAKE) -f CMakeFiles/ProjectO3d.dir/build.make CMakeFiles/ProjectO3d.dir/mx_loader/mxloader.cpp.s
+	$(MAKE) -f CMakeFiles/Plugin_MXloader.dir/build.make CMakeFiles/Plugin_MXloader.dir/mx_loader/mxloader.cpp.s
 .PHONY : mx_loader/mxloader.cpp.s
 
 # Help Target
@@ -230,6 +243,7 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... Plugin_MXloader"
 	@echo "... ProjectO3d"
 	@echo "... edit_cache"
 	@echo "... install"

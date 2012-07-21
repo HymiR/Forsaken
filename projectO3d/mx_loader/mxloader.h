@@ -21,9 +21,9 @@ typedef struct _MATERIAL {
 typedef struct _MODEL {
 	std::vector<float> textures;
 	ivec2d_type matlist;
-	std::vector<Material> materials; // 1 material: TODO create material struct
+	std::vector<Material> materials;
 	std::vector<Vertex> verts;
-	std::vector<Texcoords> texcoords; // struct with 2 float values TODO: create texcoords struct
+	std::vector<Texcoords> texcoords;
 	std::vector<float> triangles;
 	int vert_offset;
 }Model;
@@ -47,7 +47,7 @@ class MXloader {
 
 		Model* getModel();
 		void load_new_model(std::string);
-
+	
 	private:
 		FILE* modelfile;
 		std::string filepath;
