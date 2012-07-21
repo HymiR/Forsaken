@@ -42,7 +42,7 @@ typedef struct _BYTES {
 
 class MXloader {
 	public:
-		MXloader(std::string);
+		MXloader();
 		virtual ~MXloader();
 
 		Model* getModel();

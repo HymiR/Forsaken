@@ -1,8 +1,14 @@
+#include "OgreRoot.h"
 #include "mxloader_plugin.h"
+#include "mxloader.h"
 
 namespace Ogre {
 
 	const String sPluginName = "MXloader";
+
+	MXloaderPlugin::MXloaderPlugin()
+	{
+	}
 
 	String const & MXloaderPlugin::getName() const
 	{
@@ -15,6 +21,7 @@ namespace Ogre {
 
 	void MXloaderPlugin::install()
 	{
+		mxloader = OGRE_NEW MXloader();
 	}
 
 	void MXloaderPlugin::shutdown()
@@ -23,6 +30,8 @@ namespace Ogre {
 
 	void MXloaderPlugin::uninstall()
 	{
+		OGRE_DELETE mxloader;
+		mxloader = NULL;
 	}
 
 }

@@ -1,67 +1,66 @@
-16:25:33: Creating resource group General
-16:25:33: Creating resource group Internal
-16:25:33: Creating resource group Autodetect
-16:25:33: SceneManagerFactory for type 'DefaultSceneManager' registered.
-16:25:33: Registering ResourceManager for type Material
-16:25:33: Registering ResourceManager for type Mesh
-16:25:33: Registering ResourceManager for type Skeleton
-16:25:33: MovableObjectFactory for type 'ParticleSystem' registered.
-16:25:33: OverlayElementFactory for type Panel registered.
-16:25:33: OverlayElementFactory for type BorderPanel registered.
-16:25:33: OverlayElementFactory for type TextArea registered.
-16:25:33: Registering ResourceManager for type Font
-16:25:33: ArchiveFactory for archive type FileSystem registered.
-16:25:33: ArchiveFactory for archive type Zip registered.
-16:25:33: ArchiveFactory for archive type EmbeddedZip registered.
-16:25:33: DDS codec registering
-16:25:33: FreeImage version: 3.15.3
-16:25:33: This program uses FreeImage, a free, open source image library supporting all common bitmap formats. See http://freeimage.sourceforge.net for details
-16:25:33: Supported formats: bmp,ico,jpg,jif,jpeg,jpe,jng,koa,iff,lbm,mng,pbm,pbm,pcd,pcx,pgm,pgm,png,ppm,ppm,ras,tga,targa,tif,tiff,wap,wbmp,wbm,psd,cut,xbm,xpm,gif,hdr,g3,sgi,exr,j2k,j2c,jp2,pfm,pct,pict,pic,3fr,arw,bay,bmq,cap,cine,cr2,crw,cs1,dc2,dcr,drf,dsc,dng,erf,fff,ia,iiq,k25,kc2,kdc,mdc,mef,mos,mrw,nef,nrw,orf,pef,ptx,pxn,qtk,raf,raw,rdc,rw2,rwl,rwz,sr2,srf,srw,sti
-16:25:33: Registering ResourceManager for type HighLevelGpuProgram
-16:25:33: Registering ResourceManager for type Compositor
-16:25:33: MovableObjectFactory for type 'Entity' registered.
-16:25:33: MovableObjectFactory for type 'Light' registered.
-16:25:33: MovableObjectFactory for type 'BillboardSet' registered.
-16:25:33: MovableObjectFactory for type 'ManualObject' registered.
-16:25:33: MovableObjectFactory for type 'BillboardChain' registered.
-16:25:33: MovableObjectFactory for type 'RibbonTrail' registered.
-16:25:33: Loading library ./plugins/RenderSystem_GL
-16:25:33: Installing plugin: GL RenderSystem
-16:25:33: OpenGL Rendering Subsystem created.
-16:25:33: Plugin successfully installed
-16:25:33: Loading library ./plugins/Plugin_ParticleFX
-16:25:33: Installing plugin: ParticleFX
-16:25:33: Particle Emitter Type 'Point' registered
-16:25:33: Particle Emitter Type 'Box' registered
-16:25:33: Particle Emitter Type 'Ellipsoid' registered
-16:25:33: Particle Emitter Type 'Cylinder' registered
-16:25:33: Particle Emitter Type 'Ring' registered
-16:25:33: Particle Emitter Type 'HollowEllipsoid' registered
-16:25:33: Particle Affector Type 'LinearForce' registered
-16:25:33: Particle Affector Type 'ColourFader' registered
-16:25:33: Particle Affector Type 'ColourFader2' registered
-16:25:33: Particle Affector Type 'ColourImage' registered
-16:25:33: Particle Affector Type 'ColourInterpolator' registered
-16:25:33: Particle Affector Type 'Scaler' registered
-16:25:33: Particle Affector Type 'Rotator' registered
-16:25:33: Particle Affector Type 'DirectionRandomiser' registered
-16:25:33: Particle Affector Type 'DeflectorPlane' registered
-16:25:33: Plugin successfully installed
-16:25:33: Loading library ./plugins/Plugin_BSPSceneManager
-16:25:33: Installing plugin: BSP Scene Manager
-16:25:33: Plugin successfully installed
-16:25:33: Loading library ./plugins/Plugin_CgProgramManager
-16:25:33: Installing plugin: Cg Program Manager
-16:25:33: Plugin successfully installed
-16:25:33: Loading library ./plugins/Plugin_PCZSceneManager
-16:25:33: Installing plugin: Portal Connected Zone Scene Manager
-16:25:33: PCZone Factory Type 'ZoneType_Default' registered
-16:25:33: Plugin successfully installed
-16:25:33: Loading library ./plugins/Plugin_OctreeZone
-16:25:33: Installing plugin: Octree Zone Factory
-16:25:33: Plugin successfully installed
-16:25:33: Loading library ./plugins/Plugin_OctreeSceneManager
-16:25:33: Installing plugin: Octree Scene Manager
-16:25:33: Plugin successfully installed
-16:25:33: Loading library ./plugins/Plugin_MXloader
-16:25:33: OGRE EXCEPTION(5:ItemIdentityException): Cannot find symbol dllStartPlugin in library ./plugins/Plugin_MXloader in Root::loadPlugin at /build/src/ogre_src_v1-8-0/OgreMain/src/OgreRoot.cpp (line 1334)
+17:39:55: Creating resource group General
+17:39:55: Creating resource group Internal
+17:39:55: Creating resource group Autodetect
+17:39:55: SceneManagerFactory for type 'DefaultSceneManager' registered.
+17:39:55: Registering ResourceManager for type Material
+17:39:55: Registering ResourceManager for type Mesh
+17:39:55: Registering ResourceManager for type Skeleton
+17:39:55: MovableObjectFactory for type 'ParticleSystem' registered.
+17:39:55: OverlayElementFactory for type Panel registered.
+17:39:55: OverlayElementFactory for type BorderPanel registered.
+17:39:55: OverlayElementFactory for type TextArea registered.
+17:39:55: Registering ResourceManager for type Font
+17:39:55: ArchiveFactory for archive type FileSystem registered.
+17:39:55: ArchiveFactory for archive type Zip registered.
+17:39:55: ArchiveFactory for archive type EmbeddedZip registered.
+17:39:55: DDS codec registering
+17:39:55: FreeImage version: 3.15.3
+17:39:55: This program uses FreeImage, a free, open source image library supporting all common bitmap formats. See http://freeimage.sourceforge.net for details
+17:39:55: Supported formats: bmp,ico,jpg,jif,jpeg,jpe,jng,koa,iff,lbm,mng,pbm,pbm,pcd,pcx,pgm,pgm,png,ppm,ppm,ras,tga,targa,tif,tiff,wap,wbmp,wbm,psd,cut,xbm,xpm,gif,hdr,g3,sgi,exr,j2k,j2c,jp2,pfm,pct,pict,pic,3fr,arw,bay,bmq,cap,cine,cr2,crw,cs1,dc2,dcr,drf,dsc,dng,erf,fff,ia,iiq,k25,kc2,kdc,mdc,mef,mos,mrw,nef,nrw,orf,pef,ptx,pxn,qtk,raf,raw,rdc,rw2,rwl,rwz,sr2,srf,srw,sti
+17:39:55: Registering ResourceManager for type HighLevelGpuProgram
+17:39:55: Registering ResourceManager for type Compositor
+17:39:55: MovableObjectFactory for type 'Entity' registered.
+17:39:55: MovableObjectFactory for type 'Light' registered.
+17:39:55: MovableObjectFactory for type 'BillboardSet' registered.
+17:39:55: MovableObjectFactory for type 'ManualObject' registered.
+17:39:55: MovableObjectFactory for type 'BillboardChain' registered.
+17:39:55: MovableObjectFactory for type 'RibbonTrail' registered.
+17:39:55: Loading library ./plugins/RenderSystem_GL
+17:39:55: Installing plugin: GL RenderSystem
+17:39:55: OpenGL Rendering Subsystem created.
+17:39:55: Plugin successfully installed
+17:39:55: Loading library ./plugins/Plugin_ParticleFX
+17:39:55: Installing plugin: ParticleFX
+17:39:55: Particle Emitter Type 'Point' registered
+17:39:55: Particle Emitter Type 'Box' registered
+17:39:55: Particle Emitter Type 'Ellipsoid' registered
+17:39:55: Particle Emitter Type 'Cylinder' registered
+17:39:55: Particle Emitter Type 'Ring' registered
+17:39:55: Particle Emitter Type 'HollowEllipsoid' registered
+17:39:55: Particle Affector Type 'LinearForce' registered
+17:39:55: Particle Affector Type 'ColourFader' registered
+17:39:55: Particle Affector Type 'ColourFader2' registered
+17:39:55: Particle Affector Type 'ColourImage' registered
+17:39:55: Particle Affector Type 'ColourInterpolator' registered
+17:39:55: Particle Affector Type 'Scaler' registered
+17:39:55: Particle Affector Type 'Rotator' registered
+17:39:55: Particle Affector Type 'DirectionRandomiser' registered
+17:39:55: Particle Affector Type 'DeflectorPlane' registered
+17:39:55: Plugin successfully installed
+17:39:55: Loading library ./plugins/Plugin_BSPSceneManager
+17:39:55: Installing plugin: BSP Scene Manager
+17:39:55: Plugin successfully installed
+17:39:55: Loading library ./plugins/Plugin_CgProgramManager
+17:39:55: Installing plugin: Cg Program Manager
+17:39:55: Plugin successfully installed
+17:39:55: Loading library ./plugins/Plugin_PCZSceneManager
+17:39:55: Installing plugin: Portal Connected Zone Scene Manager
+17:39:55: PCZone Factory Type 'ZoneType_Default' registered
+17:39:55: Plugin successfully installed
+17:39:55: Loading library ./plugins/Plugin_OctreeZone
+17:39:55: Installing plugin: Octree Zone Factory
+17:39:55: Plugin successfully installed
+17:39:55: Loading library ./plugins/Plugin_OctreeSceneManager
+17:39:55: Installing plugin: Octree Scene Manager
+17:39:55: Plugin successfully installed
+17:39:55: Loading library ./plugins/Plugin_MXloader

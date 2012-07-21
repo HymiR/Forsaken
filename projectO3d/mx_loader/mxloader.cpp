@@ -2,13 +2,10 @@
 #include <cstring>
 #include "mxloader.h"
 
-MXloader::MXloader( std::string filepath )
+MXloader::MXloader()
 {
 	this->modelfile = NULL;
 	this->model = NULL;
-	this->filepath = filepath;
-	
-	load_new_model(filepath);
 }
 
 MXloader::~MXloader()
@@ -19,7 +16,8 @@ MXloader::~MXloader()
 void MXloader::load_new_model(std::string filepath)
 {
 	remove_old_model();
-	
+	this->filepath = filepath;
+
 	if(check_if_MX_model(filepath)) {
 		std::cout << "We have a valid mx file\n";
 		this->modelfile = fopen(filepath.c_str(), "rb");
