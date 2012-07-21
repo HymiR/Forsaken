@@ -237,6 +237,54 @@ mx_loader/mxloader.cpp.s:
 	$(MAKE) -f CMakeFiles/Plugin_MXloader.dir/build.make CMakeFiles/Plugin_MXloader.dir/mx_loader/mxloader.cpp.s
 .PHONY : mx_loader/mxloader.cpp.s
 
+mx_loader/mxloader_main.o: mx_loader/mxloader_main.cpp.o
+.PHONY : mx_loader/mxloader_main.o
+
+# target to build an object file
+mx_loader/mxloader_main.cpp.o:
+	$(MAKE) -f CMakeFiles/Plugin_MXloader.dir/build.make CMakeFiles/Plugin_MXloader.dir/mx_loader/mxloader_main.cpp.o
+.PHONY : mx_loader/mxloader_main.cpp.o
+
+mx_loader/mxloader_main.i: mx_loader/mxloader_main.cpp.i
+.PHONY : mx_loader/mxloader_main.i
+
+# target to preprocess a source file
+mx_loader/mxloader_main.cpp.i:
+	$(MAKE) -f CMakeFiles/Plugin_MXloader.dir/build.make CMakeFiles/Plugin_MXloader.dir/mx_loader/mxloader_main.cpp.i
+.PHONY : mx_loader/mxloader_main.cpp.i
+
+mx_loader/mxloader_main.s: mx_loader/mxloader_main.cpp.s
+.PHONY : mx_loader/mxloader_main.s
+
+# target to generate assembly for a file
+mx_loader/mxloader_main.cpp.s:
+	$(MAKE) -f CMakeFiles/Plugin_MXloader.dir/build.make CMakeFiles/Plugin_MXloader.dir/mx_loader/mxloader_main.cpp.s
+.PHONY : mx_loader/mxloader_main.cpp.s
+
+mx_loader/mxloader_plugin.o: mx_loader/mxloader_plugin.cpp.o
+.PHONY : mx_loader/mxloader_plugin.o
+
+# target to build an object file
+mx_loader/mxloader_plugin.cpp.o:
+	$(MAKE) -f CMakeFiles/Plugin_MXloader.dir/build.make CMakeFiles/Plugin_MXloader.dir/mx_loader/mxloader_plugin.cpp.o
+.PHONY : mx_loader/mxloader_plugin.cpp.o
+
+mx_loader/mxloader_plugin.i: mx_loader/mxloader_plugin.cpp.i
+.PHONY : mx_loader/mxloader_plugin.i
+
+# target to preprocess a source file
+mx_loader/mxloader_plugin.cpp.i:
+	$(MAKE) -f CMakeFiles/Plugin_MXloader.dir/build.make CMakeFiles/Plugin_MXloader.dir/mx_loader/mxloader_plugin.cpp.i
+.PHONY : mx_loader/mxloader_plugin.cpp.i
+
+mx_loader/mxloader_plugin.s: mx_loader/mxloader_plugin.cpp.s
+.PHONY : mx_loader/mxloader_plugin.s
+
+# target to generate assembly for a file
+mx_loader/mxloader_plugin.cpp.s:
+	$(MAKE) -f CMakeFiles/Plugin_MXloader.dir/build.make CMakeFiles/Plugin_MXloader.dir/mx_loader/mxloader_plugin.cpp.s
+.PHONY : mx_loader/mxloader_plugin.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -260,6 +308,12 @@ help:
 	@echo "... mx_loader/mxloader.o"
 	@echo "... mx_loader/mxloader.i"
 	@echo "... mx_loader/mxloader.s"
+	@echo "... mx_loader/mxloader_main.o"
+	@echo "... mx_loader/mxloader_main.i"
+	@echo "... mx_loader/mxloader_main.s"
+	@echo "... mx_loader/mxloader_plugin.o"
+	@echo "... mx_loader/mxloader_plugin.i"
+	@echo "... mx_loader/mxloader_plugin.s"
 .PHONY : help
 
 

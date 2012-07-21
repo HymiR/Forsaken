@@ -3,18 +3,20 @@
 
 #ifndef OGRE_STATIC_LIB
 
+#define _OgreMXloaderExport
+
 namespace Ogre {
 
 	MXloaderPlugin* plugin;
     //-----------------------------------------------------------------------
-    extern "C" void _OgreParticleFXExport dllStartPlugin(void) throw()
+    extern "C" void _OgreMXloaderExport dllStartPlugin(void) throw()
     {
 		plugin = OGRE_NEW MXloaderPlugin();
 		Root::getSingleton().installPlugin(plugin);
     }
 
     //-----------------------------------------------------------------------
-    extern "C" void _OgreParticleFXExport dllStopPlugin(void)
+    extern "C" void _OgreMXloaderExport dllStopPlugin(void)
     {
 		Root::getSingleton().uninstallPlugin(plugin);
 		OGRE_DELETE plugin;

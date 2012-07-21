@@ -104,7 +104,7 @@ set(SRCS
 	./ProjectO3d.cpp
 )
 
-set(mxloader_src ./mx_loader/mxloader.cpp)
+set(mxloader_src ./mx_loader/mxloader.cpp ./mx_loader/mxloader_main.cpp ./mx_loader/mxloader_plugin.cpp)
 add_library(Plugin_MXloader SHARED ${mxloader_src})
 set_target_properties(Plugin_MXloader PROPERTIES PREFIX "")
 
