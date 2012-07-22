@@ -83,11 +83,21 @@ Model* MXloader::getModel()
  */
 void MXloader::readModel()
 {
-	for(size_t i = 1; i < (size_t)getBytes("h").h; i++) { // for each group
-		for(size_t j = 1; j < (size_t)getBytes("h").h; j++) { // for each execlist
+	for(size_t i = 1; i < (size_t)getBytes("h").h[0]; i++) { // for each group
+		int verts_in_this_group = 0;
+		for(size_t j = 1; j < (size_t)getBytes("h").h[0]; j++) { // for each execlist
 			getBytes("i"); // we don't need the exec_type
-			for(size_t k = 1; k < (size_t)getBytes("h").h; k++) { // for each vertex
+			for(size_t k = 1; k < (size_t)getBytes("h").h[0]; k++) { // for each vertex
 				// here we read the bytes
+				Bytes by = getBytes("vIIIff");
+				/*
+				Vertex v;
+				for(int vi = 0; vi < 3; vi++)
+					v[vi] = by.v[vi];
+				this->model->verts.push_back(v);
+				//TODO: get, calculate, push_back Materials
+				Texcoords t;
+				*/
 			}
 			for(;;) { // for each texture group
 				for(;;) { // for each triangle
@@ -105,27 +115,41 @@ void MXloader::readModel()
  */
 Bytes MXloader::getBytes(std::string bytemask)
 {
-	Bytes by = { 0, 0, 0, {0.0f, 0.0f, 0.0f}, "" };
+	Bytes by;
+	float f = 0.0f;
+	short h = 0;
+	int i = 0;
+	unsigned int I = 0;
+	float buff_v[3] = {0.0f, 0.0f, 0.0f};
+	Vertex v = {0.0f, 0.0f, 0.0f};
+	std::string s;
 
 	for(size_t i = 0; i < bytemask.length(); i++) {
 		if(bytemask[i] == 'f') {
-
+			fread(&f, 1, 4, this->modelfile);
+			by.f.push_back(f);
 		} else if(bytemask[i] == 'h') { // read signed 2-byte (short)
-			fread(&by.h, 1, 2, this->modelfile);
+			fread(&h, 1, 2, this->modelfile);
+			by.h.push_back(h);
 		} else if(bytemask[i] == 'i') { // read signed 4-byte (int)
-			fread(&by.i, 1, 4, this->modelfile);
+			fread(&i, 1, 4, this->modelfile);
+			by.i.push_back(i);
 		} else if(bytemask[i] == 'I') { // read unsigned 4-byte (uint)
-			fread(&by.I, 1, 4, this->modelfile);
+			fread(&I, 1, 4, this->modelfile);
+			by.I.push_back(I);
 		} else if(bytemask[i] == 'v') { // read 12-byte (3*4-byte, float)
 			for(int j = 0; j < 3; j++) {
-				fread(&by.v[j], 1, 4, this->modelfile);
+				fread(&buff_v[j], 1, 4, this->modelfile);
 			}
+			v.x = buff_v[0]; v.y = buff_v[1]; v.z = buff_v[2];
+			by.v.push_back(v);
 		} else if(bytemask[i] == 'z') { // read null-terminated string
 			char c = 0;
 			while(c != '\0') {
 				fread(&c, 1, 1, this->modelfile);
-				by.s += c;
+				s += c;
 			}
+			by.s.push_back(s);
 		} else {
 			std::cout << "Wrong format character!\n";
 		}

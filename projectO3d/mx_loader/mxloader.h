@@ -33,11 +33,12 @@ typedef struct _RGBA {
 }rgba_type;
 
 typedef struct _BYTES {
-	short h;
-	int i;
-	unsigned int I;
-	float v[3];
-	std::string s;
+	std::vector<float> f;
+	std::vector<short> h;
+	std::vector<int> i;
+	std::vector<unsigned int> I;
+	std::vector<Vertex> v;
+	std::vector<std::string> s;
 }Bytes;
 
 class MXloader {

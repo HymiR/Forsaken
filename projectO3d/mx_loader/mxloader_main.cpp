@@ -1,4 +1,5 @@
 #include "OgreRoot.h"
+#include <OgrePrerequisites.h>
 #include "mxloader_plugin.h"
 
 #ifndef OGRE_STATIC_LIB
