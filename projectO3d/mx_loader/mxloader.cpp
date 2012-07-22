@@ -83,6 +83,11 @@ Model* MXloader::getModel()
  */
 void MXloader::readModel()
 {
+	for(size_t txti = 1; txti < (size_t)getBytes("h").h[0]; txti++) { // for all texture file names
+		Bytes bytxt = getBytes("z");
+		// TODO: implement texture function and call it here (put result into model)
+	}
+
 	for(size_t i = 1; i < (size_t)getBytes("h").h[0]; i++) { // for each group
 		int verts_in_this_group = 0;
 		for(size_t j = 1; j < (size_t)getBytes("h").h[0]; j++) { // for each execlist
@@ -91,7 +96,7 @@ void MXloader::readModel()
 				// here we read the bytes
 				Bytes byv = getBytes("vIIIff");
 				this->model->verts.push_back(byv.v[0]);
-				//TODO: implement materials function and call it here
+				//TODO: implement materials function and call it here (put result into model)
 				Texcoords t;
 				t.tu = byv.f[0]; t.tv = byv.f[1];
 				this->model->texcoords.push_back(t);
@@ -101,7 +106,7 @@ void MXloader::readModel()
 				Bytes byt = getBytes("hhhh");
 				for(size_t tgt = 1; tgt < (size_t)getBytes("h").h[0]; tgt++) { // for each triangle
 					Bytes bytv = getBytes("hhhhv");
-					// TODO: implement face function and call it here
+					// TODO: implement face function and call it here (put result into model)
 				}
 			}
 		}
