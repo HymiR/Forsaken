@@ -15,9 +15,6 @@ typedef struct _TEXCOORDS {
 	float tu, tv;
 }Texcoords;
 
-typedef struct _TRIANGLE {
-}Triangle;
-
 typedef struct _TEXTURE {
 	int width;
 	int height;
@@ -48,6 +45,18 @@ typedef struct _MATERIAL { // maybe this struct can also be replaced with an Ogr
 		} full;
 	};
 }Material;
+
+typedef struct _TRIANGLE {
+	typedef struct _FACEVERTEX {
+		short index;
+		Texcoords txc;
+		Material mat;
+	}FaceVertex;
+
+	FaceVertex fvert[3];
+	Vertex normal;
+	Texture texture;
+}Triangle;
 
 typedef struct _MODEL {
 	std::vector<Texture> textures;
@@ -89,6 +98,7 @@ class MXloader {
 		void addmat(unsigned int, unsigned int, Material);
 		Material material(unsigned int, unsigned int);
 		Material gfx_material(int, rgba_type, rgba_type, int);
+		Triangle face(short, short, short, Vertex, Texture);
 		bool check_if_MX_model(std::string);
 		void readModel();
 		void remove_old_model();

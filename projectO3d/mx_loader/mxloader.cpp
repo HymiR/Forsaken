@@ -88,6 +88,22 @@ Material MXloader::gfx_material(int flags, rgba_type color, rgba_type specular, 
 	return mat;
 }
 
+Triangle MXloader::face(short vx, short vy, short vz, Vertex normal, Texture texture)
+{
+	Triangle tri;
+	short v0 = vx + this->model->vert_offset;
+	short v1 = vy + this->model->vert_offset;
+	short v2 = vz + this->model->vert_offset;
+
+	tri.fvert[0].index = v0; tri.fvert[0].txc = this->model->texcoords[v0]; this->model->materials[v0];
+	tri.fvert[1].index = v1; tri.fvert[0].txc = this->model->texcoords[v1]; this->model->materials[v1];
+	tri.fvert[2].index = v2; tri.fvert[0].txc = this->model->texcoords[v2]; this->model->materials[v2];
+	tri.normal = normal;
+	tri.texture = texture;
+
+	return tri;
+}
+
 bool MXloader::check_if_MX_model(std::string file)
 {
 	FILE* fp = NULL;
@@ -140,8 +156,8 @@ void MXloader::readModel()
 			for(size_t tg = 0; tg < (size_t)getBytes("h").h[0]; tg++) { // for each texture group
 				Bytes byt = getBytes("hhhh");
 				for(size_t tgt = 0; tgt < (size_t)getBytes("h").h[0]; tgt++) { // for each triangle
-					Bytes bytv = getBytes("hhhhv");
-					// TODO: implement face function and call it here (put result into model)
+					Bytes bytv = getBytes("hhhhv"); // the 4th short can be omitted
+					this->model->triangles.push_back(face(bytv.h[0], bytv.h[1], bytv.h[2], bytv.v[0], this->model->textures[byt.h[3]]));
 				}
 			}
 		}
@@ -157,7 +173,7 @@ void MXloader::readModel()
  * Format characters:
  *   f = 4-byte floating-point value (float)
  *   h = signed 2-byte value (short)
- *   i = signed 4-byte value (int) (actually it is a 2 byte value)
+ *   i = signed 4-byte value (int)
  *   I = unsigned 4-byte value (int)
  *   v = vector (3 floats totaling 12 bytes)
  *   z = null-terminated string
