@@ -89,22 +89,23 @@ void MXloader::readModel()
 			getBytes("i"); // we don't need the exec_type
 			for(size_t k = 1; k < (size_t)getBytes("h").h[0]; k++) { // for each vertex
 				// here we read the bytes
-				Bytes by = getBytes("vIIIff");
-				/*
-				Vertex v;
-				for(int vi = 0; vi < 3; vi++)
-					v[vi] = by.v[vi];
-				this->model->verts.push_back(v);
-				//TODO: get, calculate, push_back Materials
+				Bytes byv = getBytes("vIIIff");
+				this->model->verts.push_back(byv.v[0]);
+				//TODO: implement materials function and call it here
 				Texcoords t;
-				*/
+				t.tu = byv.f[0]; t.tv = byv.f[1];
+				this->model->texcoords.push_back(t);
+				verts_in_this_group++;
 			}
-			for(;;) { // for each texture group
-				for(;;) { // for each triangle
-				
+			for(size_t tg = 1; tg < (size_t)getBytes("h").h[0]; tg++) { // for each texture group
+				Bytes byt = getBytes("hhhh");
+				for(size_t tgt = 1; tgt < (size_t)getBytes("h").h[0]; tgt++) { // for each triangle
+					Bytes bytv = getBytes("hhhhv");
+					// TODO: implement face function and call it here
 				}
 			}
 		}
+		this->model->vert_offset += verts_in_this_group;
 	}
 }
 
