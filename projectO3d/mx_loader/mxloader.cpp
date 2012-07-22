@@ -78,7 +78,7 @@ Model* MXloader::getModel()
 
 /**
  * This function will read in the model
- * file and put the data in out Model
+ * file and put the data in our Model
  * structure.
  */
 void MXloader::readModel()
@@ -96,7 +96,7 @@ void MXloader::readModel()
 				// here we read the bytes
 				Bytes byv = getBytes("vIIIff");
 				this->model->verts.push_back(byv.v[0]);
-				//TODO: implement materials function and call it here (put result into model)
+				// TODO: implement materials function and call it here (put result into model)
 				Texcoords t;
 				t.tu = byv.f[0]; t.tv = byv.f[1];
 				this->model->texcoords.push_back(t);
@@ -118,6 +118,14 @@ void MXloader::readModel()
  * This function accepts a string containing a
  * mask which tells the function how much bytes it
  * should read and what format they have.
+ *
+ * Format characters:
+ *   f = 4-byte floating-point value (float)
+ *   h = signed 2-byte value (short)
+ *   i = signed 4-byte value (int) (actually it is a 2 byte value)
+ *   I = unsigned 4-byte value (int)
+ *   v = vector (3 floats totaling 12 bytes)
+ *   z = null-terminated string
  */
 Bytes MXloader::getBytes(std::string bytemask)
 {
