@@ -39,18 +39,53 @@ void MXloader::remove_old_model()
 	}
 }
 
-rgba_type MXloader::rgba(int n)
+rgba_type MXloader::rgba(unsigned int n)
 {
 	rgba_type rgba_s;
-	rgba_s.b = (n & 0xff) / 255;
+	rgba_s.b = (unsigned char)(n & 0xff) / 255;
 	n = n >> 8;
-	rgba_s.g = (n & 0xff) / 255;
+	rgba_s.g = (unsigned char)(n & 0xff) / 255;
 	n = n >> 8;
-	rgba_s.r = (n & 0xff) / 255;
+	rgba_s.r = (unsigned char)(n & 0xff) / 255;
 	n = n >> 8;
-	rgba_s.a = (n & 0xff) / 255;
+	rgba_s.a = (unsigned char)(n & 0xff) / 255;
 	n = n >> 8;
 	return rgba_s;
+}
+
+Material MXloader::getmat(unsigned int color, unsigned int specular)
+{
+	Material mat;
+	// TODO: implement this
+	return mat;
+}
+
+void MXloader::addmat(unsigned int color, unsigned int specular, Material mat)
+{
+	// TODO: implement this
+}
+
+Material MXloader::material(unsigned int color, unsigned int specular)
+{
+	Material mat;
+	rgba_type rgba_col = rgba(color);
+	rgba_type rgba_spe = rgba(specular | (255 << 24));
+	mat = getmat(color, specular);
+	//if(mat != NULL)
+	//	return mat;
+
+	mat = gfx_material(0, rgba_col, rgba_spe, 1);
+
+	addmat(color, specular, mat);
+
+	return mat;
+}
+
+Material MXloader::gfx_material(int flags, rgba_type color, rgba_type specular, int alpha)
+{
+	Material mat;
+	// TODO: implement this
+	return mat;
 }
 
 bool MXloader::check_if_MX_model(std::string file)
@@ -83,28 +118,28 @@ Model* MXloader::getModel()
  */
 void MXloader::readModel()
 {
-	for(size_t txti = 1; txti < (size_t)getBytes("h").h[0]; txti++) { // for all texture file names
+	for(size_t txti = 0; txti < (size_t)getBytes("h").h[0]; txti++) { // for all texture file names
 		Bytes bytxt = getBytes("z");
 		// TODO: implement texture function and call it here (put result into model)
 	}
 
-	for(size_t i = 1; i < (size_t)getBytes("h").h[0]; i++) { // for each group
+	for(size_t i = 0; i < (size_t)getBytes("h").h[0]; i++) { // for each group
 		int verts_in_this_group = 0;
-		for(size_t j = 1; j < (size_t)getBytes("h").h[0]; j++) { // for each execlist
+		for(size_t j = 0; j < (size_t)getBytes("h").h[0]; j++) { // for each execlist
 			getBytes("i"); // we don't need the exec_type
-			for(size_t k = 1; k < (size_t)getBytes("h").h[0]; k++) { // for each vertex
+			for(size_t k = 0; k < (size_t)getBytes("h").h[0]; k++) { // for each vertex
 				// here we read the bytes
-				Bytes byv = getBytes("vIIIff");
+				Bytes byv = getBytes("vIIIff"); // the first 'I' value is crap, we can throw it away
 				this->model->verts.push_back(byv.v[0]);
-				// TODO: implement materials function and call it here (put result into model)
+				this->model->materials.push_back(material(byv.I[1], byv.I[2]));
 				Texcoords t;
 				t.tu = byv.f[0]; t.tv = byv.f[1];
 				this->model->texcoords.push_back(t);
 				verts_in_this_group++;
 			}
-			for(size_t tg = 1; tg < (size_t)getBytes("h").h[0]; tg++) { // for each texture group
+			for(size_t tg = 0; tg < (size_t)getBytes("h").h[0]; tg++) { // for each texture group
 				Bytes byt = getBytes("hhhh");
-				for(size_t tgt = 1; tgt < (size_t)getBytes("h").h[0]; tgt++) { // for each triangle
+				for(size_t tgt = 0; tgt < (size_t)getBytes("h").h[0]; tgt++) { // for each triangle
 					Bytes bytv = getBytes("hhhhv");
 					// TODO: implement face function and call it here (put result into model)
 				}
