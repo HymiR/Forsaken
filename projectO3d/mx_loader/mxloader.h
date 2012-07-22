@@ -15,16 +15,22 @@ typedef struct _TEXCOORDS {
 	float tu, tv;
 }Texcoords;
 
+typedef struct _TRIANGLE {
+}Triangle;
+
+typedef struct _TEXTURE {
+}Texture;
+
 typedef struct _MATERIAL {
 }Material;
 
 typedef struct _MODEL {
-	std::vector<float> textures;
+	std::vector<Texture> textures;
 	ivec2d_type matlist;
 	std::vector<Material> materials;
 	std::vector<Vertex> verts;
 	std::vector<Texcoords> texcoords;
-	std::vector<float> triangles;
+	std::vector<Triangle> triangles;
 	int vert_offset;
 }Model;
 
