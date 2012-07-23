@@ -103,6 +103,9 @@ class MXconverter {
 		void readModel();
 		void remove_old_model();
 		Bytes getBytes(std::string);
+
+		template<class T>
+		void reverse_byte_order(T&, size_t);
 	protected:
 };
 
