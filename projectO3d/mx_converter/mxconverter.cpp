@@ -153,8 +153,11 @@ void MXconverter::readModel()
 			for(size_t k = 0; k < (size_t)getBytes("h").h[0]; k++) { // for each vertex
 				// here we read the bytes
 				Bytes byv = getBytes("vIIIff"); // the first 'I' value is crap, we can throw it away
+				printf("GOT THE FUCKING BYTES!!!\n");
 				this->model->verts.push_back(byv.v[0]);
+				printf("WHY U NO PUSHBACK??\n");
 				this->model->materials.push_back(material(byv.I[1], byv.I[2]));
+				printf("WHY U NO PUSHBACK AGAIN???\n");
 				Texcoords t;
 				t.tu = byv.f[0]; t.tv = byv.f[1];
 				this->model->texcoords.push_back(t);
@@ -210,7 +213,6 @@ Bytes MXconverter::getBytes(std::string bytemask)
 			by.f.push_back(f);
 		} else if(bytemask[it] == 'h') { // read signed 2-byte (short)
 			fread(&h, 1, 2, this->modelfile);
-			//reverse_byte_order(h, sizeof(h));
 			by.h.push_back(h);
 		} else if(bytemask[it] == 'i') { // read signed 4-byte (int)
 			fread(&i, 1, 4, this->modelfile);
@@ -223,7 +225,7 @@ Bytes MXconverter::getBytes(std::string bytemask)
 		} else if(bytemask[it] == 'v') { // read 12-byte (3*4-byte, float)
 			for(int j = 0; j < 3; j++) {
 				fread(&pseudofloat, 1, 4, this->modelfile);
-				reverse_byte_order(pseudofloat, sizeof(pseudofloat));
+				//reverse_byte_order(pseudofloat, sizeof(pseudofloat));
 				buff_v[j] = *(float*)&pseudofloat; // !!! CHECK IF THIS CONVERSION IS VALID !!!
 			}
 			v.x = buff_v[0]; v.y = buff_v[1]; v.z = buff_v[2];
