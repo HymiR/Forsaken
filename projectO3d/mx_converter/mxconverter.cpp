@@ -17,6 +17,7 @@ void MXconverter::load_new_model(std::string filepath)
 {
 	remove_old_model();
 	this->filepath = filepath;
+	this->model = new Model();
 
 	if(check_if_MX_model()) {
 		std::cout << "We have a valid mx file\n";
@@ -139,7 +140,7 @@ Model* MXconverter::getModel()
  */
 void MXconverter::readModel()
 {
-	printf("last 4 bytes: %x\n", getBytes("ii").i[1]); // jump over magic number
+	getBytes("ii"); // jump over magic number
 	for(size_t txti = 0; txti < (size_t)getBytes("h").h[0]; txti++) { // for all texture file names
 		Bytes bytxt = getBytes("z");
 		// TODO: implement texture function and call it here (put result into model)
@@ -153,16 +154,16 @@ void MXconverter::readModel()
 			for(size_t k = 0; k < (size_t)getBytes("h").h[0]; k++) { // for each vertex
 				// here we read the bytes
 				Bytes byv = getBytes("vIIIff"); // the first 'I' value is crap, we can throw it away
-				printf("GOT THE FUCKING BYTES!!!\n");
 				this->model->verts.push_back(byv.v[0]);
-				printf("WHY U NO PUSHBACK??\n");
 				this->model->materials.push_back(material(byv.I[1], byv.I[2]));
-				printf("WHY U NO PUSHBACK AGAIN???\n");
 				Texcoords t;
 				t.tu = byv.f[0]; t.tv = byv.f[1];
 				this->model->texcoords.push_back(t);
 				verts_in_this_group++;
 			}
+
+			printf("we have %d vertices in this group\n",verts_in_this_group);
+
 			for(size_t tg = 0; tg < (size_t)getBytes("h").h[0]; tg++) { // for each texture group
 				Bytes byt = getBytes("hhhh");
 				for(size_t tgt = 0; tgt < (size_t)getBytes("h").h[0]; tgt++) { // for each triangle
