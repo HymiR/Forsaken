@@ -105,8 +105,14 @@ set(SRCS
 )
 
 set(mxconverter_src ./mx_converter/mxconverter.cpp)
+set(mxconverter_hdr ./mx_converter/include/mxconverter.h)
 add_library(MXconverter SHARED ${mxconverter_src})
-set_target_properties(MXconverter PROPERTIES PREFIX "lib")
+target_link_libraries(MXconverter)
+#set_target_properties(MXconverter PROPERTIES PREFIX "lib")
+
+set(converter_src ./mx_converter/converter_main.cpp)
+add_executable(converter ${converter_src} ${mxconverter_hdr})
+target_link_libraries(converter MXconverter boost_system boost_filesystem)
 
 include_directories( ${OIS_INCLUDE_DIRS}
 	${OGRE_INCLUDE_DIRS}
@@ -140,8 +146,12 @@ if(WIN32)
 		RUNTIME DESTINATION bin
 		CONFIGURATIONS All)
 
+	install(TARGETS converter
+		RUNTIME DESTINATION bin
+		CONFIGURATIONS All)
+
 	install(TARGETS MXconverter
-		RUNTIME DESTINATION lib
+		DESTINATION lib
 		CONFIGURATIONS All)
 
 	install(DIRECTORY ${CMAKE_SOURCE_DIR}/dist/Media
@@ -197,6 +207,10 @@ endif(WIN32)
 if(UNIX)
  
 	install(TARGETS ProjectO3d
+		RUNTIME DESTINATION bin
+		CONFIGURATIONS All)
+
+	install(TARGETS converter
 		RUNTIME DESTINATION bin
 		CONFIGURATIONS All)
 

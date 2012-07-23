@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cstring>
-#include "mxconverter.h"
+#include "include/mxconverter.h"
 
 MXconverter::MXconverter()
 {

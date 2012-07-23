@@ -165,6 +165,19 @@ ProjectO3d/fast:
 	$(MAKE) -f CMakeFiles/ProjectO3d.dir/build.make CMakeFiles/ProjectO3d.dir/build
 .PHONY : ProjectO3d/fast
 
+#=============================================================================
+# Target rules for targets named converter
+
+# Build rule for target.
+converter: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 converter
+.PHONY : converter
+
+# fast build rule for target.
+converter/fast:
+	$(MAKE) -f CMakeFiles/converter.dir/build.make CMakeFiles/converter.dir/build
+.PHONY : converter/fast
+
 O3dconfig.o: O3dconfig.cpp.o
 .PHONY : O3dconfig.o
 
@@ -213,6 +226,30 @@ ProjectO3d.cpp.s:
 	$(MAKE) -f CMakeFiles/ProjectO3d.dir/build.make CMakeFiles/ProjectO3d.dir/ProjectO3d.cpp.s
 .PHONY : ProjectO3d.cpp.s
 
+mx_converter/converter_main.o: mx_converter/converter_main.cpp.o
+.PHONY : mx_converter/converter_main.o
+
+# target to build an object file
+mx_converter/converter_main.cpp.o:
+	$(MAKE) -f CMakeFiles/converter.dir/build.make CMakeFiles/converter.dir/mx_converter/converter_main.cpp.o
+.PHONY : mx_converter/converter_main.cpp.o
+
+mx_converter/converter_main.i: mx_converter/converter_main.cpp.i
+.PHONY : mx_converter/converter_main.i
+
+# target to preprocess a source file
+mx_converter/converter_main.cpp.i:
+	$(MAKE) -f CMakeFiles/converter.dir/build.make CMakeFiles/converter.dir/mx_converter/converter_main.cpp.i
+.PHONY : mx_converter/converter_main.cpp.i
+
+mx_converter/converter_main.s: mx_converter/converter_main.cpp.s
+.PHONY : mx_converter/converter_main.s
+
+# target to generate assembly for a file
+mx_converter/converter_main.cpp.s:
+	$(MAKE) -f CMakeFiles/converter.dir/build.make CMakeFiles/converter.dir/mx_converter/converter_main.cpp.s
+.PHONY : mx_converter/converter_main.cpp.s
+
 mx_converter/mxconverter.o: mx_converter/mxconverter.cpp.o
 .PHONY : mx_converter/mxconverter.o
 
@@ -245,6 +282,7 @@ help:
 	@echo "... depend"
 	@echo "... MXconverter"
 	@echo "... ProjectO3d"
+	@echo "... converter"
 	@echo "... edit_cache"
 	@echo "... install"
 	@echo "... install/local"
@@ -257,6 +295,9 @@ help:
 	@echo "... ProjectO3d.o"
 	@echo "... ProjectO3d.i"
 	@echo "... ProjectO3d.s"
+	@echo "... mx_converter/converter_main.o"
+	@echo "... mx_converter/converter_main.i"
+	@echo "... mx_converter/converter_main.s"
 	@echo "... mx_converter/mxconverter.o"
 	@echo "... mx_converter/mxconverter.i"
 	@echo "... mx_converter/mxconverter.s"
