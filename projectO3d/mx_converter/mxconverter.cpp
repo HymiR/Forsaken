@@ -1,19 +1,19 @@
 #include <iostream>
 #include <cstring>
-#include "mxloader.h"
+#include "mxconverter.h"
 
-MXloader::MXloader()
+MXconverter::MXconverter()
 {
 	this->modelfile = NULL;
 	this->model = NULL;
 }
 
-MXloader::~MXloader()
+MXconverter::~MXconverter()
 {
 	remove_old_model();
 }
 
-void MXloader::load_new_model(std::string filepath)
+void MXconverter::load_new_model(std::string filepath)
 {
 	remove_old_model();
 	this->filepath = filepath;
@@ -26,7 +26,7 @@ void MXloader::load_new_model(std::string filepath)
 	}
 }
 
-void MXloader::remove_old_model()
+void MXconverter::remove_old_model()
 {
 	if(this->model){
 		delete this->model;
@@ -39,7 +39,7 @@ void MXloader::remove_old_model()
 	}
 }
 
-rgba_type MXloader::rgba(unsigned int n)
+rgba_type MXconverter::rgba(unsigned int n)
 {
 	rgba_type rgba_s;
 	rgba_s.b = (unsigned char)(n & 0xff) / 255;
@@ -53,19 +53,19 @@ rgba_type MXloader::rgba(unsigned int n)
 	return rgba_s;
 }
 
-Material MXloader::getmat(unsigned int color, unsigned int specular)
+Material MXconverter::getmat(unsigned int color, unsigned int specular)
 {
 	Material mat;
 	// TODO: implement this
 	return mat;
 }
 
-void MXloader::addmat(unsigned int color, unsigned int specular, Material mat)
+void MXconverter::addmat(unsigned int color, unsigned int specular, Material mat)
 {
 	// TODO: implement this
 }
 
-Material MXloader::material(unsigned int color, unsigned int specular)
+Material MXconverter::material(unsigned int color, unsigned int specular)
 {
 	Material mat;
 	rgba_type rgba_col = rgba(color);
@@ -81,14 +81,14 @@ Material MXloader::material(unsigned int color, unsigned int specular)
 	return mat;
 }
 
-Material MXloader::gfx_material(int flags, rgba_type color, rgba_type specular, int alpha)
+Material MXconverter::gfx_material(int flags, rgba_type color, rgba_type specular, int alpha)
 {
 	Material mat;
 	// TODO: implement this
 	return mat;
 }
 
-Triangle MXloader::face(short vx, short vy, short vz, Vertex normal, Texture texture)
+Triangle MXconverter::face(short vx, short vy, short vz, Vertex normal, Texture texture)
 {
 	Triangle tri;
 	short v0 = vx + this->model->vert_offset;
@@ -104,7 +104,7 @@ Triangle MXloader::face(short vx, short vy, short vz, Vertex normal, Texture tex
 	return tri;
 }
 
-bool MXloader::check_if_MX_model(std::string file)
+bool MXconverter::check_if_MX_model(std::string file)
 {
 	FILE* fp = NULL;
 	unsigned char X[4] = {0};
@@ -122,7 +122,7 @@ bool MXloader::check_if_MX_model(std::string file)
 	return false;
 }
 
-Model* MXloader::getModel()
+Model* MXconverter::getModel()
 {
 	return this->model;
 }
@@ -132,7 +132,7 @@ Model* MXloader::getModel()
  * file and put the data in our Model
  * structure.
  */
-void MXloader::readModel()
+void MXconverter::readModel()
 {
 	for(size_t txti = 0; txti < (size_t)getBytes("h").h[0]; txti++) { // for all texture file names
 		Bytes bytxt = getBytes("z");
@@ -178,7 +178,7 @@ void MXloader::readModel()
  *   v = vector (3 floats totaling 12 bytes)
  *   z = null-terminated string
  */
-Bytes MXloader::getBytes(std::string bytemask)
+Bytes MXconverter::getBytes(std::string bytemask)
 {
 	Bytes by;
 	float f = 0.0f;

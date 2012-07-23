@@ -1,5 +1,5 @@
-#ifndef __MXLOADER_H_
-#define __MXLOADER_H_
+#ifndef __MXCONVERTER_H_
+#define __MXCONVERTER_H_
 #include <vector>
 #include <cstdio>
 #include "boost/multi_array.hpp"
@@ -81,10 +81,10 @@ typedef struct _BYTES {
 	std::vector<std::string> s;
 }Bytes;
 
-class MXloader {
+class MXconverter {
 	public:
-		MXloader();
-		virtual ~MXloader();
+		MXconverter();
+		virtual ~MXconverter();
 
 		Model* getModel();
 		void load_new_model(std::string);

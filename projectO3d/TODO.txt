@@ -1,6 +1,6 @@
 This file contains the milestones we have to reach to have a working game
 
-1. Implement a model loader plugin for the Ogre3d engine
+1. Implement a model converter for the Ogre3d engine mesh format
 
 2. Write a music (ogg) / sound effect (wav) library
 

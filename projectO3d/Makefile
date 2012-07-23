@@ -140,17 +140,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named Plugin_MXloader
+# Target rules for targets named MXconverter
 
 # Build rule for target.
-Plugin_MXloader: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Plugin_MXloader
-.PHONY : Plugin_MXloader
+MXconverter: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 MXconverter
+.PHONY : MXconverter
 
 # fast build rule for target.
-Plugin_MXloader/fast:
-	$(MAKE) -f CMakeFiles/Plugin_MXloader.dir/build.make CMakeFiles/Plugin_MXloader.dir/build
-.PHONY : Plugin_MXloader/fast
+MXconverter/fast:
+	$(MAKE) -f CMakeFiles/MXconverter.dir/build.make CMakeFiles/MXconverter.dir/build
+.PHONY : MXconverter/fast
 
 #=============================================================================
 # Target rules for targets named ProjectO3d
@@ -213,77 +213,29 @@ ProjectO3d.cpp.s:
 	$(MAKE) -f CMakeFiles/ProjectO3d.dir/build.make CMakeFiles/ProjectO3d.dir/ProjectO3d.cpp.s
 .PHONY : ProjectO3d.cpp.s
 
-mx_loader/mxloader.o: mx_loader/mxloader.cpp.o
-.PHONY : mx_loader/mxloader.o
+mx_converter/mxconverter.o: mx_converter/mxconverter.cpp.o
+.PHONY : mx_converter/mxconverter.o
 
 # target to build an object file
-mx_loader/mxloader.cpp.o:
-	$(MAKE) -f CMakeFiles/Plugin_MXloader.dir/build.make CMakeFiles/Plugin_MXloader.dir/mx_loader/mxloader.cpp.o
-.PHONY : mx_loader/mxloader.cpp.o
+mx_converter/mxconverter.cpp.o:
+	$(MAKE) -f CMakeFiles/MXconverter.dir/build.make CMakeFiles/MXconverter.dir/mx_converter/mxconverter.cpp.o
+.PHONY : mx_converter/mxconverter.cpp.o
 
-mx_loader/mxloader.i: mx_loader/mxloader.cpp.i
-.PHONY : mx_loader/mxloader.i
-
-# target to preprocess a source file
-mx_loader/mxloader.cpp.i:
-	$(MAKE) -f CMakeFiles/Plugin_MXloader.dir/build.make CMakeFiles/Plugin_MXloader.dir/mx_loader/mxloader.cpp.i
-.PHONY : mx_loader/mxloader.cpp.i
-
-mx_loader/mxloader.s: mx_loader/mxloader.cpp.s
-.PHONY : mx_loader/mxloader.s
-
-# target to generate assembly for a file
-mx_loader/mxloader.cpp.s:
-	$(MAKE) -f CMakeFiles/Plugin_MXloader.dir/build.make CMakeFiles/Plugin_MXloader.dir/mx_loader/mxloader.cpp.s
-.PHONY : mx_loader/mxloader.cpp.s
-
-mx_loader/mxloader_main.o: mx_loader/mxloader_main.cpp.o
-.PHONY : mx_loader/mxloader_main.o
-
-# target to build an object file
-mx_loader/mxloader_main.cpp.o:
-	$(MAKE) -f CMakeFiles/Plugin_MXloader.dir/build.make CMakeFiles/Plugin_MXloader.dir/mx_loader/mxloader_main.cpp.o
-.PHONY : mx_loader/mxloader_main.cpp.o
-
-mx_loader/mxloader_main.i: mx_loader/mxloader_main.cpp.i
-.PHONY : mx_loader/mxloader_main.i
+mx_converter/mxconverter.i: mx_converter/mxconverter.cpp.i
+.PHONY : mx_converter/mxconverter.i
 
 # target to preprocess a source file
-mx_loader/mxloader_main.cpp.i:
-	$(MAKE) -f CMakeFiles/Plugin_MXloader.dir/build.make CMakeFiles/Plugin_MXloader.dir/mx_loader/mxloader_main.cpp.i
-.PHONY : mx_loader/mxloader_main.cpp.i
+mx_converter/mxconverter.cpp.i:
+	$(MAKE) -f CMakeFiles/MXconverter.dir/build.make CMakeFiles/MXconverter.dir/mx_converter/mxconverter.cpp.i
+.PHONY : mx_converter/mxconverter.cpp.i
 
-mx_loader/mxloader_main.s: mx_loader/mxloader_main.cpp.s
-.PHONY : mx_loader/mxloader_main.s
-
-# target to generate assembly for a file
-mx_loader/mxloader_main.cpp.s:
-	$(MAKE) -f CMakeFiles/Plugin_MXloader.dir/build.make CMakeFiles/Plugin_MXloader.dir/mx_loader/mxloader_main.cpp.s
-.PHONY : mx_loader/mxloader_main.cpp.s
-
-mx_loader/mxloader_plugin.o: mx_loader/mxloader_plugin.cpp.o
-.PHONY : mx_loader/mxloader_plugin.o
-
-# target to build an object file
-mx_loader/mxloader_plugin.cpp.o:
-	$(MAKE) -f CMakeFiles/Plugin_MXloader.dir/build.make CMakeFiles/Plugin_MXloader.dir/mx_loader/mxloader_plugin.cpp.o
-.PHONY : mx_loader/mxloader_plugin.cpp.o
-
-mx_loader/mxloader_plugin.i: mx_loader/mxloader_plugin.cpp.i
-.PHONY : mx_loader/mxloader_plugin.i
-
-# target to preprocess a source file
-mx_loader/mxloader_plugin.cpp.i:
-	$(MAKE) -f CMakeFiles/Plugin_MXloader.dir/build.make CMakeFiles/Plugin_MXloader.dir/mx_loader/mxloader_plugin.cpp.i
-.PHONY : mx_loader/mxloader_plugin.cpp.i
-
-mx_loader/mxloader_plugin.s: mx_loader/mxloader_plugin.cpp.s
-.PHONY : mx_loader/mxloader_plugin.s
+mx_converter/mxconverter.s: mx_converter/mxconverter.cpp.s
+.PHONY : mx_converter/mxconverter.s
 
 # target to generate assembly for a file
-mx_loader/mxloader_plugin.cpp.s:
-	$(MAKE) -f CMakeFiles/Plugin_MXloader.dir/build.make CMakeFiles/Plugin_MXloader.dir/mx_loader/mxloader_plugin.cpp.s
-.PHONY : mx_loader/mxloader_plugin.cpp.s
+mx_converter/mxconverter.cpp.s:
+	$(MAKE) -f CMakeFiles/MXconverter.dir/build.make CMakeFiles/MXconverter.dir/mx_converter/mxconverter.cpp.s
+.PHONY : mx_converter/mxconverter.cpp.s
 
 # Help Target
 help:
@@ -291,7 +243,7 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... Plugin_MXloader"
+	@echo "... MXconverter"
 	@echo "... ProjectO3d"
 	@echo "... edit_cache"
 	@echo "... install"
@@ -305,15 +257,9 @@ help:
 	@echo "... ProjectO3d.o"
 	@echo "... ProjectO3d.i"
 	@echo "... ProjectO3d.s"
-	@echo "... mx_loader/mxloader.o"
-	@echo "... mx_loader/mxloader.i"
-	@echo "... mx_loader/mxloader.s"
-	@echo "... mx_loader/mxloader_main.o"
-	@echo "... mx_loader/mxloader_main.i"
-	@echo "... mx_loader/mxloader_main.s"
-	@echo "... mx_loader/mxloader_plugin.o"
-	@echo "... mx_loader/mxloader_plugin.i"
-	@echo "... mx_loader/mxloader_plugin.s"
+	@echo "... mx_converter/mxconverter.o"
+	@echo "... mx_converter/mxconverter.i"
+	@echo "... mx_converter/mxconverter.s"
 .PHONY : help
 
 
