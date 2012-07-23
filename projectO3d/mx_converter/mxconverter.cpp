@@ -145,18 +145,22 @@ void MXconverter::readModel()
 	size_t groupsize, execsize, vertexsize, texgroupsize, trianglesize, texfilesize = 0;
 	getBytes("ii"); // jump over magic number
 	texfilesize = (size_t)getBytes("h").h[0];
+	printf("we have %d textures\n", texfilesize);
 	for(size_t txti = 0; txti < texfilesize; txti++) { // for all texture file names
 		Bytes bytxt = getBytes("z");
 		// TODO: implement texture function and call it here (put result into model)
 		std::cout << "Texture file: " << bytxt.s[txti] << "\n";
 	}
 	groupsize = (size_t)getBytes("h").h[0];
+	printf("we have %d groups\n", groupsize);
 	for(size_t i = 0; i < groupsize; i++) { // for each group
 		int verts_in_this_group = 0;
 		execsize = (size_t)getBytes("h").h[0];
+		printf("we have %d exec lists\n");
 		for(size_t j = 0; j < execsize; j++) { // for each execlist
 			getBytes("i"); // we don't need the exec_type
 			vertexsize = (size_t)getBytes("h").h[0];
+			printf("we have %d vertices in group %d\n", vertexsize, i);
 			for(size_t k = 0; k < vertexsize; k++) { // for each vertex
 				// here we read the bytes
 				Bytes byv = getBytes("vIIIff"); // the first 'I' value is crap, we can throw it away
@@ -168,15 +172,15 @@ void MXconverter::readModel()
 				verts_in_this_group++;
 			}
 
-			printf("we have %d vertices in this group\n",verts_in_this_group);
-
 			texgroupsize = (size_t)getBytes("h").h[0];
+			printf("we have %d texture groups\n", texgroupsize);
 			for(size_t tg = 0; tg < texgroupsize; tg++) { // for each texture group
 				Bytes byt = getBytes("hhhh");
 				trianglesize = (size_t)getBytes("h").h[0];
+				printf("we have %d triangles in texture group %d\n", trianglesize, tg);
 				for(size_t tgt = 0; tgt < trianglesize; tgt++) { // for each triangle
 					Bytes bytv = getBytes("hhhhv"); // the 4th short can be omitted
-					this->model->triangles.push_back(face(bytv.h[0], bytv.h[1], bytv.h[2], bytv.v[0], this->model->textures[byt.h[3]]));
+					//this->model->triangles.push_back(face(bytv.h[0], bytv.h[1], bytv.h[2], bytv.v[0], this->model->textures[byt.h[3]]));
 				}
 			}
 		}
@@ -218,11 +222,11 @@ Bytes MXconverter::getBytes(std::string bytemask)
 	for(size_t it = 0; it < bytemask.length(); it++) {
 		if(bytemask[it] == 'f') {
 			fread(&pseudofloat, 1, 4, this->modelfile);
-			//reverse_byte_order(pseudofloat, sizeof(pseudofloat));
-			f = *(float*)&pseudofloat; // !!! CHECK IF THIS CONVERSION IS VALID !!!
+			f = *(float*)&pseudofloat;
 			by.f.push_back(f);
 		} else if(bytemask[it] == 'h') { // read signed 2-byte (short)
 			fread(&h, 1, 2, this->modelfile);
+			printf("read h: %x\n", h);
 			by.h.push_back(h);
 		} else if(bytemask[it] == 'i') { // read signed 4-byte (int)
 			fread(&i, 1, 4, this->modelfile);
@@ -235,17 +239,17 @@ Bytes MXconverter::getBytes(std::string bytemask)
 		} else if(bytemask[it] == 'v') { // read 12-byte (3*4-byte, float)
 			for(int j = 0; j < 3; j++) {
 				fread(&pseudofloat, 1, 4, this->modelfile);
-				//reverse_byte_order(pseudofloat, sizeof(pseudofloat));
-				buff_v[j] = *(float*)&pseudofloat; // !!! CHECK IF THIS CONVERSION IS VALID !!!
+				buff_v[j] = *(float*)&pseudofloat;
 			}
 			v.x = buff_v[0]; v.y = buff_v[1]; v.z = buff_v[2];
 			by.v.push_back(v);
 		} else if(bytemask[it] == 'z') { // read null-terminated string
 			char c = -1;
-			do {
+			while(c != '\0') {
 				fread(&c, 1, 1, this->modelfile);
 				s += c;
-			} while(c != '\0');
+			}
+			fread(&c, 1, 1, this->modelfile); // jump 1 byte
 			by.s.push_back(s);
 		} else {
 			std::cout << "Wrong format character!\n";
