@@ -99,7 +99,7 @@ class MXconverter {
 		Material material(unsigned int, unsigned int);
 		Material gfx_material(int, rgba_type, rgba_type, int);
 		Triangle face(short, short, short, Vertex, Texture);
-		bool check_if_MX_model(std::string);
+		bool check_if_MX_model();
 		void readModel();
 		void remove_old_model();
 		Bytes getBytes(std::string);

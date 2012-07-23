@@ -18,12 +18,14 @@ void MXconverter::load_new_model(std::string filepath)
 	remove_old_model();
 	this->filepath = filepath;
 
-	if(check_if_MX_model(filepath)) {
+	if(check_if_MX_model()) {
 		std::cout << "We have a valid mx file\n";
 		this->modelfile = fopen(filepath.c_str(), "rb");
 	} else {
 		std::cout << "We don't have a valid mx file\n";
+		return;
 	}
+	this->modelfile = fopen(this->filepath.c_str(), "rb");
 	readModel();
 }
 
@@ -38,6 +40,8 @@ void MXconverter::remove_old_model()
 		fclose(this->modelfile);
 		this->modelfile = NULL;
 	}
+
+	this->filepath = "";
 }
 
 rgba_type MXconverter::rgba(unsigned int n)
@@ -105,7 +109,7 @@ Triangle MXconverter::face(short vx, short vy, short vz, Vertex normal, Texture 
 	return tri;
 }
 
-bool MXconverter::check_if_MX_model(std::string file)
+bool MXconverter::check_if_MX_model()
 {
 	int X = 0;
 	int Y = 0x50524a58; // the magic number
@@ -113,8 +117,7 @@ bool MXconverter::check_if_MX_model(std::string file)
 	if (this->modelfile != NULL) {
 		X = getBytes("ii").i[0];
 		fclose(this->modelfile);
-		printf("X is: %x\n", X);
-		printf("Y is: %x\n", Y);
+		this->modelfile = NULL;
 		if(X == Y)
 			return true;
 	} else {
@@ -136,7 +139,7 @@ Model* MXconverter::getModel()
  */
 void MXconverter::readModel()
 {
-	getBytes("ii"); // jump over magic number
+	printf("last 4 bytes: %x\n", getBytes("ii").i[1]); // jump over magic number
 	for(size_t txti = 0; txti < (size_t)getBytes("h").h[0]; txti++) { // for all texture file names
 		Bytes bytxt = getBytes("z");
 		// TODO: implement texture function and call it here (put result into model)
@@ -199,25 +202,25 @@ Bytes MXconverter::getBytes(std::string bytemask)
 	std::string s;
 	unsigned int pseudofloat = 0;
 
-	for(size_t i = 0; i < bytemask.length(); i++) {
-		if(bytemask[i] == 'f') {
+	for(size_t it = 0; it < bytemask.length(); it++) {
+		if(bytemask[it] == 'f') {
 			fread(&pseudofloat, 1, 4, this->modelfile);
 			reverse_byte_order(pseudofloat, sizeof(pseudofloat));
 			f = *(float*)&pseudofloat; // !!! CHECK IF THIS CONVERSION IS VALID !!!
 			by.f.push_back(f);
-		} else if(bytemask[i] == 'h') { // read signed 2-byte (short)
+		} else if(bytemask[it] == 'h') { // read signed 2-byte (short)
 			fread(&h, 1, 2, this->modelfile);
-			reverse_byte_order(h, sizeof(h));
+			//reverse_byte_order(h, sizeof(h));
 			by.h.push_back(h);
-		} else if(bytemask[i] == 'i') { // read signed 4-byte (int)
+		} else if(bytemask[it] == 'i') { // read signed 4-byte (int)
 			fread(&i, 1, 4, this->modelfile);
 			reverse_byte_order(i, sizeof(i));
 			by.i.push_back(i);
-		} else if(bytemask[i] == 'I') { // read unsigned 4-byte (uint)
+		} else if(bytemask[it] == 'I') { // read unsigned 4-byte (uint)
 			fread(&I, 1, 4, this->modelfile);
 			reverse_byte_order(I, sizeof(I));
 			by.I.push_back(I);
-		} else if(bytemask[i] == 'v') { // read 12-byte (3*4-byte, float)
+		} else if(bytemask[it] == 'v') { // read 12-byte (3*4-byte, float)
 			for(int j = 0; j < 3; j++) {
 				fread(&pseudofloat, 1, 4, this->modelfile);
 				reverse_byte_order(pseudofloat, sizeof(pseudofloat));
@@ -225,12 +228,12 @@ Bytes MXconverter::getBytes(std::string bytemask)
 			}
 			v.x = buff_v[0]; v.y = buff_v[1]; v.z = buff_v[2];
 			by.v.push_back(v);
-		} else if(bytemask[i] == 'z') { // read null-terminated string
+		} else if(bytemask[it] == 'z') { // read null-terminated string
 			char c = -1;
-			while(c != '\0') {
+			do {
 				fread(&c, 1, 1, this->modelfile);
 				s += c;
-			}
+			} while(c != '\0');
 			by.s.push_back(s);
 		} else {
 			std::cout << "Wrong format character!\n";
