@@ -28,6 +28,8 @@ void MXconverter::load_new_model(std::string filepath)
 	}
 	this->modelfile = fopen(this->filepath.c_str(), "rb");
 	readModel();
+	fclose(this->modelfile);
+	this->modelfile = NULL;
 }
 
 void MXconverter::remove_old_model()
@@ -140,18 +142,22 @@ Model* MXconverter::getModel()
  */
 void MXconverter::readModel()
 {
+	size_t groupsize, execsize, vertexsize, texgroupsize, trianglesize, texfilesize = 0;
 	getBytes("ii"); // jump over magic number
-	for(size_t txti = 0; txti < (size_t)getBytes("h").h[0]; txti++) { // for all texture file names
+	texfilesize = (size_t)getBytes("h").h[0];
+	for(size_t txti = 0; txti < texfilesize; txti++) { // for all texture file names
 		Bytes bytxt = getBytes("z");
 		// TODO: implement texture function and call it here (put result into model)
 		std::cout << "Texture file: " << bytxt.s[txti] << "\n";
 	}
-
-	for(size_t i = 0; i < (size_t)getBytes("h").h[0]; i++) { // for each group
+	groupsize = (size_t)getBytes("h").h[0];
+	for(size_t i = 0; i < groupsize; i++) { // for each group
 		int verts_in_this_group = 0;
-		for(size_t j = 0; j < (size_t)getBytes("h").h[0]; j++) { // for each execlist
+		execsize = (size_t)getBytes("h").h[0];
+		for(size_t j = 0; j < execsize; j++) { // for each execlist
 			getBytes("i"); // we don't need the exec_type
-			for(size_t k = 0; k < (size_t)getBytes("h").h[0]; k++) { // for each vertex
+			vertexsize = (size_t)getBytes("h").h[0];
+			for(size_t k = 0; k < vertexsize; k++) { // for each vertex
 				// here we read the bytes
 				Bytes byv = getBytes("vIIIff"); // the first 'I' value is crap, we can throw it away
 				this->model->verts.push_back(byv.v[0]);
@@ -164,9 +170,11 @@ void MXconverter::readModel()
 
 			printf("we have %d vertices in this group\n",verts_in_this_group);
 
-			for(size_t tg = 0; tg < (size_t)getBytes("h").h[0]; tg++) { // for each texture group
+			texgroupsize = (size_t)getBytes("h").h[0];
+			for(size_t tg = 0; tg < texgroupsize; tg++) { // for each texture group
 				Bytes byt = getBytes("hhhh");
-				for(size_t tgt = 0; tgt < (size_t)getBytes("h").h[0]; tgt++) { // for each triangle
+				trianglesize = (size_t)getBytes("h").h[0];
+				for(size_t tgt = 0; tgt < trianglesize; tgt++) { // for each triangle
 					Bytes bytv = getBytes("hhhhv"); // the 4th short can be omitted
 					this->model->triangles.push_back(face(bytv.h[0], bytv.h[1], bytv.h[2], bytv.v[0], this->model->textures[byt.h[3]]));
 				}
@@ -174,6 +182,7 @@ void MXconverter::readModel()
 		}
 		this->model->vert_offset += verts_in_this_group;
 	}
+	printf("read the model\n");
 }
 
 /**
@@ -209,7 +218,7 @@ Bytes MXconverter::getBytes(std::string bytemask)
 	for(size_t it = 0; it < bytemask.length(); it++) {
 		if(bytemask[it] == 'f') {
 			fread(&pseudofloat, 1, 4, this->modelfile);
-			reverse_byte_order(pseudofloat, sizeof(pseudofloat));
+			//reverse_byte_order(pseudofloat, sizeof(pseudofloat));
 			f = *(float*)&pseudofloat; // !!! CHECK IF THIS CONVERSION IS VALID !!!
 			by.f.push_back(f);
 		} else if(bytemask[it] == 'h') { // read signed 2-byte (short)
