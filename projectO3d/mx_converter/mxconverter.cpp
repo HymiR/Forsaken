@@ -61,16 +61,17 @@ rgba_type MXconverter::rgba(unsigned int n)
 	return rgba_s;
 }
 
+/**
+ * TODO: Find out if i still need this functions
+
 Material MXconverter::getmat(unsigned int color, unsigned int specular)
 {
 	Material mat;
-	// TODO: implement this
 	return mat;
 }
 
 void MXconverter::addmat(unsigned int color, unsigned int specular, Material mat)
 {
-	// TODO: implement this
 }
 
 Material MXconverter::material(unsigned int color, unsigned int specular)
@@ -92,14 +93,12 @@ Material MXconverter::material(unsigned int color, unsigned int specular)
 Material MXconverter::gfx_material(int flags, rgba_type color, rgba_type specular, int alpha)
 {
 	Material mat;
-	// TODO: implement this
 	return mat;
 }
 
 Triangle MXconverter::face(short vx, short vy, short vz, Vertex normal, Texture texture)
 {
 	Triangle tri;
-	/*
 	short v0 = vx + this->model->vert_offset;
 	short v1 = vy + this->model->vert_offset;
 	short v2 = vz + this->model->vert_offset;
@@ -109,9 +108,9 @@ Triangle MXconverter::face(short vx, short vy, short vz, Vertex normal, Texture 
 	tri.fvert[2].index = v2; tri.fvert[0].txc = this->model->texcoords[v2]; this->model->materials[v2];
 	tri.normal = normal;
 	tri.texture = texture;
-	*/
 	return tri;
 }
+*/
 
 bool MXconverter::check_if_MX_model()
 {
