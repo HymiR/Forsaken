@@ -19,21 +19,23 @@ typedef struct _TEXTURE {
 	int width;
 	int height;
 	int flags;
+	std::string file;
 	char *data; // maybe replace this with an Ogre texture type
 }Texture;
 
+/*
 typedef struct _MATERIAL { // maybe this struct can also be replaced with an Ogre type
 	int flags;
 	union
 	{
-		/* Simple colored material with alpha and specular value. */
+		// Simple colored material with alpha and specular value.
 		struct
 		{
 			float color[3];
 			float specular[3];
 			float alpha;
 		} simple;
-		/* Detailed material specification. */
+		// Detailed material specification.
 		struct
 		{
 			float ambient[3];
@@ -45,7 +47,9 @@ typedef struct _MATERIAL { // maybe this struct can also be replaced with an Ogr
 		} full;
 	};
 }Material;
+*/
 
+/*
 typedef struct _TRIANGLE {
 	typedef struct _FACEVERTEX {
 		short index;
@@ -57,6 +61,29 @@ typedef struct _TRIANGLE {
 	Vertex normal;
 	Texture texture;
 }Triangle;
+*/
+
+typedef struct _TRIANGLE {
+	short v0, v1, v2;
+	Vertex normal;
+}Triangle;
+
+typedef struct _RGBA {
+	unsigned char r,g,b,a;
+}rgba_type;
+
+typedef struct _MATERIAL {
+	rgba_type color, specular;
+}Material;
+
+typedef struct _BYTES {
+	std::vector<float> f;
+	std::vector<short> h;
+	std::vector<int> i;
+	std::vector<unsigned int> I;
+	std::vector<Vertex> v;
+	std::vector<std::string> s;
+}Bytes;
 
 typedef struct _MODEL {
 	std::vector<Texture> textures;
@@ -68,18 +95,6 @@ typedef struct _MODEL {
 	int vert_offset;
 }Model;
 
-typedef struct _RGBA {
-	unsigned char r,g,b,a;
-}rgba_type;
-
-typedef struct _BYTES {
-	std::vector<float> f;
-	std::vector<short> h;
-	std::vector<int> i;
-	std::vector<unsigned int> I;
-	std::vector<Vertex> v;
-	std::vector<std::string> s;
-}Bytes;
 
 class MXconverter {
 	public:

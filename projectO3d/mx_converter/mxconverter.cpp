@@ -99,6 +99,7 @@ Material MXconverter::gfx_material(int flags, rgba_type color, rgba_type specula
 Triangle MXconverter::face(short vx, short vy, short vz, Vertex normal, Texture texture)
 {
 	Triangle tri;
+	/*
 	short v0 = vx + this->model->vert_offset;
 	short v1 = vy + this->model->vert_offset;
 	short v2 = vz + this->model->vert_offset;
@@ -108,7 +109,7 @@ Triangle MXconverter::face(short vx, short vy, short vz, Vertex normal, Texture 
 	tri.fvert[2].index = v2; tri.fvert[0].txc = this->model->texcoords[v2]; this->model->materials[v2];
 	tri.normal = normal;
 	tri.texture = texture;
-
+	*/
 	return tri;
 }
 
@@ -148,7 +149,9 @@ void MXconverter::readModel()
 	printf("we have %d textures\n", texfilesize);
 	for(size_t txti = 0; txti < texfilesize; txti++) { // for all texture file names
 		Bytes bytxt = getBytes("z");
-		// TODO: implement texture function and call it here (put result into model)
+		Texture tex;
+		tex.file = bytxt.s[txti]; // convert this to lower
+		this->model->textures.push_back(tex);
 		std::cout << "Texture file: " << bytxt.s[txti] << "\n";
 	}
 	groupsize = (size_t)getBytes("h").h[0];
@@ -165,7 +168,9 @@ void MXconverter::readModel()
 				// here we read the bytes
 				Bytes byv = getBytes("vIIIff"); // the first 'I' value is crap, we can throw it away
 				this->model->verts.push_back(byv.v[0]);
-				this->model->materials.push_back(material(byv.I[1], byv.I[2]));
+				Material mat;
+				mat.color = rgba(byv.I[1]); mat.specular = rgba(byv.I[2]);
+				this->model->materials.push_back(mat);
 				Texcoords t;
 				t.tu = byv.f[0]; t.tv = byv.f[1];
 				this->model->texcoords.push_back(t);
@@ -180,7 +185,10 @@ void MXconverter::readModel()
 				printf("we have %d triangles in texture group %d\n", trianglesize, tg);
 				for(size_t tgt = 0; tgt < trianglesize; tgt++) { // for each triangle
 					Bytes bytv = getBytes("hhhhv"); // the 4th short can be omitted
-					//this->model->triangles.push_back(face(bytv.h[0], bytv.h[1], bytv.h[2], bytv.v[0], this->model->textures[byt.h[3]]));
+					Triangle tri;
+					tri.v0 = bytv.h[0]; tri.v1 = bytv.h[1]; tri.v2 = bytv.h[2];
+					tri.normal = bytv.v[0];
+					this->model->triangles.push_back(tri);
 				}
 			}
 		}
