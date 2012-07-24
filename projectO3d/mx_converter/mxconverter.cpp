@@ -1,5 +1,6 @@
 #include <iostream>
-#include <cstring>
+#include <string>
+#include <boost/algorithm/string.hpp>
 #include "include/mxconverter.h"
 
 MXconverter::MXconverter()
@@ -149,9 +150,11 @@ void MXconverter::readModel()
 	for(size_t txti = 0; txti < texfilesize; txti++) { // for all texture file names
 		Bytes bytxt = getBytes("z");
 		Texture tex;
-		tex.file = bytxt.s[txti]; // convert this to lower
+		std::string fb = bytxt.s[txti];
+		boost::algorithm::to_lower(fb); // our filenames are all lowercase
+		tex.file = fb;
 		this->model->textures.push_back(tex);
-		std::cout << "Texture file: " << bytxt.s[txti] << "\n";
+		std::cout << "Texture file: " << tex.file << "\n";
 	}
 	groupsize = (size_t)getBytes("h").h[0];
 	printf("we have %d groups\n", groupsize);
