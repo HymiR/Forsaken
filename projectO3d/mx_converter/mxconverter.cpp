@@ -161,9 +161,9 @@ void MXconverter::readModel()
 	for(size_t i = 0; i < groupsize; i++) { // for each group
 		int verts_in_this_group = 0;
 		execsize = (size_t)getBytes("h").h[0];
-		printf("we have %d exec lists\n");
+		printf("we have %d exec lists\n", execsize);
 		for(size_t j = 0; j < execsize; j++) { // for each execlist
-			getBytes("i"); // we don't need the exec_type
+			printf("Exectype is: %x\n", getBytes("i").i[0]); // we don't need the exec_type
 			vertexsize = (size_t)getBytes("h").h[0];
 			printf("we have %d vertices in group %d\n", vertexsize, i);
 			for(size_t k = 0; k < vertexsize; k++) { // for each vertex
@@ -232,11 +232,11 @@ Bytes MXconverter::getBytes(std::string bytemask)
 	for(size_t it = 0; it < bytemask.length(); it++) {
 		if(bytemask[it] == 'f') {
 			fread(&pseudofloat, 1, 4, this->modelfile);
+			reverse_byte_order(pseudofloat, sizeof(pseudofloat));
 			f = *(float*)&pseudofloat;
 			by.f.push_back(f);
 		} else if(bytemask[it] == 'h') { // read signed 2-byte (short)
 			fread(&h, 1, 2, this->modelfile);
-			printf("read h: %x\n", h);
 			by.h.push_back(h);
 		} else if(bytemask[it] == 'i') { // read signed 4-byte (int)
 			fread(&i, 1, 4, this->modelfile);
@@ -249,6 +249,7 @@ Bytes MXconverter::getBytes(std::string bytemask)
 		} else if(bytemask[it] == 'v') { // read 12-byte (3*4-byte, float)
 			for(int j = 0; j < 3; j++) {
 				fread(&pseudofloat, 1, 4, this->modelfile);
+				reverse_byte_order(pseudofloat, sizeof(pseudofloat));
 				buff_v[j] = *(float*)&pseudofloat;
 			}
 			v.x = buff_v[0]; v.y = buff_v[1]; v.z = buff_v[2];
@@ -259,7 +260,7 @@ Bytes MXconverter::getBytes(std::string bytemask)
 				fread(&c, 1, 1, this->modelfile);
 				s += c;
 			}
-			fread(&c, 1, 1, this->modelfile); // jump 1 byte
+			//fread(&c, 1, 1, this->modelfile); // jump 1 byte
 			by.s.push_back(s);
 		} else {
 			std::cout << "Wrong format character!\n";
