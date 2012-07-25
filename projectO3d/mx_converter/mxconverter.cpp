@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <iomanip>
 #include <boost/algorithm/string.hpp>
 #include "include/mxconverter.h"
 
@@ -119,7 +120,10 @@ bool MXconverter::check_if_MX_model()
 	int Y = 0x50524a58; // the magic number
 	this->modelfile = fopen(this->filepath.c_str(),"rb");
 	if (this->modelfile != NULL) {
-		X = getBytes("ii").i[0];
+		Bytes by = getBytes("ii");
+		X = by.i[0];
+		int ver = by.i[1];
+		std::cout << "Version: " << std::hex << ver/0x1000000 << std::endl;
 		fclose(this->modelfile);
 		this->modelfile = NULL;
 		if(X == Y)
