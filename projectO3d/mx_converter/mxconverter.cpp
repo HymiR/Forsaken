@@ -63,56 +63,6 @@ rgba_type MXconverter::rgba(unsigned int n)
 	return rgba_s;
 }
 
-/**
- * TODO: Find out if i still need this functions
-
-Material MXconverter::getmat(unsigned int color, unsigned int specular)
-{
-	Material mat;
-	return mat;
-}
-
-void MXconverter::addmat(unsigned int color, unsigned int specular, Material mat)
-{
-}
-
-Material MXconverter::material(unsigned int color, unsigned int specular)
-{
-	Material mat;
-	rgba_type rgba_col = rgba(color);
-	rgba_type rgba_spe = rgba(specular | (255 << 24));
-	mat = getmat(color, specular);
-	//if(mat != NULL)
-	//	return mat;
-
-	mat = gfx_material(0, rgba_col, rgba_spe, 1);
-
-	addmat(color, specular, mat);
-
-	return mat;
-}
-
-Material MXconverter::gfx_material(int flags, rgba_type color, rgba_type specular, int alpha)
-{
-	Material mat;
-	return mat;
-}
-
-Triangle MXconverter::face(short vx, short vy, short vz, Vertex normal, Texture texture)
-{
-	Triangle tri;
-	short v0 = vx + this->model->vert_offset;
-	short v1 = vy + this->model->vert_offset;
-	short v2 = vz + this->model->vert_offset;
-
-	tri.fvert[0].index = v0; tri.fvert[0].txc = this->model->texcoords[v0]; this->model->materials[v0];
-	tri.fvert[1].index = v1; tri.fvert[0].txc = this->model->texcoords[v1]; this->model->materials[v1];
-	tri.fvert[2].index = v2; tri.fvert[0].txc = this->model->texcoords[v2]; this->model->materials[v2];
-	tri.normal = normal;
-	tri.texture = texture;
-	return tri;
-}
-*/
 
 bool MXconverter::check_if_MX_model()
 {
